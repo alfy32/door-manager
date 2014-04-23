@@ -35,6 +35,8 @@ Fl_Input *ipt_glass_style=(Fl_Input *)0;
 
 Fl_Browser *bsr_MostUsed=(Fl_Browser *)0;
 
+Fl_Button *btn_settings=(Fl_Button *)0;
+
 Fl_Group *grp_DoorGrid=(Fl_Group *)0;
 
 Fl_Scroll *scroll_DoorGrid=(Fl_Scroll *)0;
@@ -76,7 +78,7 @@ int main(int argc, char **argv) {
         ipt_glass_style->callback((Fl_Callback*)cb_SearchTextChanged);
         ipt_glass_style->when(FL_WHEN_CHANGED);
       } // Fl_Input* ipt_glass_style
-      { bsr_MostUsed = new Fl_Browser(25, 235, 210, 285);
+      { bsr_MostUsed = new Fl_Browser(25, 235, 210, 245);
         bsr_MostUsed->type(1);
         bsr_MostUsed->box(FL_GTK_THIN_DOWN_BOX);
         bsr_MostUsed->color((Fl_Color)55);
@@ -84,6 +86,9 @@ int main(int argc, char **argv) {
         bsr_MostUsed->deactivate();
         Fl_Group::current()->resizable(bsr_MostUsed);
       } // Fl_Browser* bsr_MostUsed
+      { btn_settings = new Fl_Button(25, 498, 210, 27, "Settings");
+        btn_settings->callback((Fl_Callback*)cb_btn_settings);
+      } // Fl_Button* btn_settings
       grp_Sidebar->end();
     } // Fl_Group* grp_Sidebar
     { grp_DoorGrid = new Fl_Group(260, 0, 520, 550);

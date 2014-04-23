@@ -31,6 +31,9 @@ extern Fl_Input *ipt_glass_style;
 #include <FL/Fl_Browser.H>
 extern void cb_MostUsedItemSelected(Fl_Browser*, void*);
 extern Fl_Browser *bsr_MostUsed;
+#include <FL/Fl_Button.H>
+extern void cb_btn_settings(Fl_Button*, void*);
+extern Fl_Button *btn_settings;
 extern Fl_Group *grp_DoorGrid;
 #include <FL/Fl_Scroll.H>
 extern Fl_Scroll *scroll_DoorGrid;
@@ -75,7 +78,6 @@ extern Fl_Value_Input *val_Markup;
 extern Fl_Value_Input *val_LaborCost;
 extern Fl_Value_Input *val_Taxes;
 extern Fl_Value_Input *val_Total;
-#include <FL/Fl_Button.H>
 extern void cb_PrintClicked(Fl_Button*, void*);
 extern void cb_CancelClicked(Fl_Button*, void*);
 Fl_Double_Window* make_door_info_dialog();
