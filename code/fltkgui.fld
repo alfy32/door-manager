@@ -26,7 +26,7 @@ decl {\#include <FL/Fl_Choice.H>} {public global
 decl {using namespace std;} {public global
 } 
 
-class Resize_Window {: {public Fl_Double_Window}
+class Resize_Window {open : {public Fl_Double_Window}
 } {
   Function {Resize_Window(int W, int H, const char *l = 0): Fl_Double_Window(W,H,l)} {open
   } {
@@ -49,9 +49,12 @@ Fl_Double_Window::resize(X, Y, W, H);
 if(W != width || H != height)
    cb_resize(this);} {}
   }
+  decl {sqlite3 *db;} {public local
+  }
 } 
 
-Function {} {} {
+Function {} {open
+} {
   code {Fl::scheme("gtk+");
 Fl::option(Fl::OPTION_ARROW_FOCUS, true);} {}
   code {//database structure	
@@ -62,7 +65,7 @@ Fl::option(Fl::OPTION_ARROW_FOCUS, true);} {}
 	int rc;
 
 	// Open the test.db file
-	rc = sqlite3_open("doors.db", &db);
+	rc = sqlite3_open("Data\\\\doors.db", &db);
 
 	if( rc ){
 		// failed
@@ -76,25 +79,26 @@ Fl::option(Fl::OPTION_ARROW_FOCUS, true);} {}
 	}} {}
   Fl_Window wnd_main {
     label {Door Manager}
-    user_data db
-    xywh {234 87 780 547} type Double color 55 align 80 hide resizable
-    class Resize_Window size_range {522 277 0 0}
+    user_data db open selected
+    xywh {373 162 780 547} type Double color 55 align 80 resizable
+    code0 {wnd_main->db = db;}
+    class Resize_Window size_range {522 277 0 0} visible
   } {
-    Fl_Group grp_Sidebar {
-      xywh {0 0 260 547} box FLAT_BOX selection_color 55
+    Fl_Group grp_Sidebar {open
+      xywh {0 0 260 547} box FLAT_BOX color 23 selection_color 55
     } {
       Fl_Input ipt_style {
         label {Style:}
         callback cb_SearchTextChanged
         xywh {105 30 130 30} box GTK_DOWN_BOX when 1
       }
-      Fl_Input ipt_size {
-        label {Size:}
+      Fl_Input ipt_material {
+        label {Material:}
         callback cb_SearchTextChanged
         xywh {105 75 130 30} box GTK_DOWN_BOX when 1
       }
-      Fl_Input ipt_material {
-        label {Material:}
+      Fl_Input ipt_design {
+        label {Design:}
         callback cb_SearchTextChanged
         xywh {105 120 130 30} box GTK_DOWN_BOX when 1
       }
@@ -105,12 +109,11 @@ Fl::option(Fl::OPTION_ARROW_FOCUS, true);} {}
       }
       Fl_Browser bsr_MostUsed {
         callback cb_MostUsedItemSelected
-        xywh {25 235 210 285} type Select box GTK_THIN_DOWN_BOX color 55 resizable
+        xywh {25 235 210 285} type Select box GTK_THIN_DOWN_BOX color 55 deactivate resizable
       }
     }
-    Fl_Group grp_DoorGrid {
-      callback cb_grid
-      xywh {260 0 520 550} when 1 resizable
+    Fl_Group grp_DoorGrid {open
+      xywh {260 0 520 550} resizable
     } {
       Fl_Scroll scroll_DoorGrid {open
         xywh {260 0 520 550} color 7 when 0 resizable
@@ -120,279 +123,268 @@ Fl::option(Fl::OPTION_ARROW_FOCUS, true);} {}
   code {cb_resize(wnd_main);} {}
 } 
 
-Function {make_door_info_dialog_old(Door door)} {} {
-  Fl_Window {} {
-    label {Door Information}
-    xywh {8 30 748 651} type Double color 55 align 80 hide
-  } {
-    Fl_Button {} {
-      label Print
-      xywh {430 630 85 25}
-    }
-    Fl_Button {} {
-      label Cancel
-      xywh {525 630 85 25}
-    }
-    Fl_Box {} {
-      label {Door Style/\#:}
-      xywh {65 426 95 24} align 24
-    }
-    Fl_Box {} {
-      label {Door Material:}
-      xywh {65 456 95 24} align 24
-    }
-    Fl_Box {} {
-      label {Glass \# / Style:}
-      xywh {65 486 95 24} align 24
-    }
-    Fl_Group {} {
-      image {Downloads/FCM758.jpg} xywh {70 119 125 291} align 0
-    } {}
-    Fl_Pack {} {
-      xywh {190 50 330 550}
-    } {
-      Fl_Input {} {
-        label {Door Location/Name:}
-        xywh {349 84 155 30}
-      }
-      Fl_Menu_Button {} {
-        label {Door Size:} open
-        xywh {349 135 155 30} color 53 align 4
-      } {}
-      Fl_Menu_Button {} {
-        label {Door Swing:} open
-        xywh {349 191 155 30} color 53 align 4
-      } {}
-      Fl_Menu_Button {} {
-        label {Jamb Size:} open
-        xywh {349 247 155 30} color 53 align 4
-      } {}
-      Fl_Menu_Button {} {
-        label {Jamb Material:} open
-        xywh {349 303 155 30} color 53 align 4
-      } {}
-      Fl_Menu_Button {} {
-        label {Sill:} open
-        xywh {349 360 155 30} color 53 align 4
-      } {}
-      Fl_Check_Button {} {
-        label Yes
-        xywh {365 415 50 15} down_box DOWN_BOX
-      }
-      Fl_Check_Button {} {
-        label No
-        xywh {455 415 45 15} down_box DOWN_BOX
-      }
-      Fl_Check_Button {} {
-        label Yes
-        xywh {365 444 50 15} down_box DOWN_BOX
-      }
-      Fl_Check_Button {} {
-        label No
-        xywh {455 444 45 15} down_box DOWN_BOX
-      }
-      Fl_Box {} {
-        label {Brickmold:}
-        xywh {275 413 75 17}
-      }
-      Fl_Box {} {
-        label {Dead Bolt:}
-        xywh {274 444 75 17}
-      }
-      Fl_Text_Editor {} {
-        label {Notes:}
-        xywh {346 470 158 120} align 7
-      }
-    }
-    Fl_Box {} {
-      label {Door Size:}
-      xywh {64 516 95 24} align 24
-    }
-    Fl_Box {} {
-      label style
-      xywh {156 426 95 24} align 20
-      code0 {o->label(door.style().c_str());}
-    }
-    Fl_Box {} {
-      label material
-      xywh {157 456 95 24} align 20
-      code0 {o->label(door.material().c_str());}
-    }
-    Fl_Box {} {
-      label glass
-      xywh {156 487 95 24} align 20
-      code0 {o->label(door.glass_style().c_str());}
-    }
-    Fl_Box {} {
-      label size
-      xywh {156 516 95 24} align 20
-    }
-  }
-} 
-
-Function {make_door_info_dialog(Door door)} {open
-} {
+Function {make_door_info_dialog()} {} {
   Fl_Window {} {
     label {Door Information} open
-    xywh {375 152 510 620} type Double color 55 align 80 visible
+    xywh {380 48 808 624} type Double color 55 align 80 visible
   } {
-    Fl_Input txt_LocationName {
-      xywh {310 22 180 27}
+    Fl_Box boxDoorImage {
+      xywh {25 28 130 251} box THIN_UP_FRAME
     }
-    Fl_Choice lst_DoorSize {open
-      xywh {310 58 180 27} down_box BORDER_BOX
-    } {}
-    Fl_Choice lst_DoorSwing {open
-      xywh {310 93 180 27} down_box BORDER_BOX
-    } {}
-    Fl_Choice lst_JambSize {open
-      xywh {310 128 180 27} down_box BORDER_BOX
-    } {}
-    Fl_Choice lst_JambMaterial {open
-      xywh {310 163 180 27} down_box BORDER_BOX
-    } {}
-    Fl_Choice lst_Sill {open
-      xywh {310 198 180 27} down_box BORDER_BOX
-    } {}
-    Fl_Group {} {open
-      xywh {185 231 306 33}
+    Fl_Output opt_DoorStyle {
+      label {Door Style/\#:}
+      xywh {25 305 130 27} color 54 align 5
+    }
+    Fl_Output opt_DoorMaterial {
+      label {Door Material:}
+      xywh {25 354 130 27} color 54 align 5
+    }
+    Fl_Output opt_GlassStyle {
+      label {Glass Style/\#:}
+      xywh {25 403 130 27} color 54 align 5
+    }
+    Fl_Output opt_DoorDesign {
+      label {Door Design:}
+      xywh {25 452 130 27} color 54 align 5
+    }
+    Fl_Value_Output opt_DoorCost {
+      label {Door Cost:}
+      xywh {25 502 130 27} color 55 align 5
+    }
+    Fl_Group {} {
+      label Door open
+      xywh {170 26 341 186} box RFLAT_BOX color 23 align 5
     } {
-      Fl_Box {} {
-        label {Brickmold:}
-        xywh {185 235 100 27} align 20
-      }
-      Fl_Check_Button chk_BrickMoldYes {
-        label Yes
-        callback cb_update
-        xywh {310 235 75 27} type Radio box GTK_UP_BOX down_box DOWN_BOX value 1 color 53
-      }
-      Fl_Check_Button chk_BrickMoldNo {
-        label No
-        callback cb_update
-        xywh {415 235 76 27} type Radio box GTK_UP_BOX down_box DOWN_BOX color 53
-      }
+      Fl_Choice lst_DoorSize {
+        label {Door Size:}
+        callback cb_update open
+        xywh {274 41 221 27} down_box BORDER_BOX color 55 when 1
+        code0 {\#include "Door_Size_Chooser.h"}
+        class Door_Size_Chooser
+      } {}
+      Fl_Choice lst_DoorSwing {
+        label {Door Swing:}
+        callback cb_update open
+        xywh {274 83 221 27} down_box BORDER_BOX color 55
+      } {}
+      Fl_Choice lst_Sill {
+        label {Sill:}
+        callback cb_update open
+        xywh {274 125 221 27} down_box BORDER_BOX color 55
+      } {}
+      Fl_Choice lst_HingeColor {
+        label {Hinge Color:}
+        callback cb_update open
+        xywh {274 167 221 27} down_box BORDER_BOX color 55
+      } {}
     }
-    Fl_Group {} {open
-      xywh {185 265 306 34}
+    Fl_Group {} {
+      label {Customer Details} open
+      xywh {521 26 271 186} box RFLAT_BOX color 23 align 5
     } {
-      Fl_Box {} {
-        label {Dead Bolt:}
-        xywh {185 271 100 27} align 20
+      Fl_Input txt_LocationName {
+        label {Door Location:}
+        xywh {630 41 146 27}
       }
-      Fl_Check_Button chk_DeadBoltYes {
-        label Yes
-        callback cb_update
-        xywh {310 271 75 27} type Radio box GTK_UP_BOX down_box DOWN_BOX color 53
+      Fl_Input txt_Customer {
+        label {Customer:}
+        xywh {630 83 146 27}
       }
-      Fl_Check_Button chk_DeadBoltNo {
-        label No
-        callback cb_update
-        xywh {415 271 76 27} type Radio box GTK_UP_BOX down_box DOWN_BOX value 1 color 53
+      Fl_Input txt_Job {
+        label {Job:}
+        xywh {630 125 146 27}
+      }
+      Fl_Input txt_Date {
+        label {Date:}
+        xywh {630 167 146 27}
       }
     }
-    Fl_Choice lst_HingeColor {open
-      xywh {310 305 180 27} down_box BORDER_BOX
-    } {}
-    Fl_Value_Output val_Cost {selected
-      xywh {310 339 180 27} box DOWN_BOX color 55 selection_color 15
+    Fl_Group {} {
+      label Jamb open
+      xywh {170 240 622 101} box RFLAT_BOX color 23 align 5
+    } {
+      Fl_Choice lst_JambMaterial {
+        label {Jamb Material:} open
+        xywh {274 257 220 27} down_box BORDER_BOX color 55
+      } {}
+      Fl_Choice lst_JambSize {
+        label {Jamb Size:} open
+        xywh {274 294 220 27} down_box BORDER_BOX color 55
+      } {}
+      Fl_Check_Button chk_NeedsRipping {
+        label {Needs Ripping}
+        callback cb_NeedsRipping_click
+        xywh {510 295 111 25} down_box DOWN_BOX
+      }
+      Fl_Input txt_CustomRipSize {
+        xywh {630 294 140 27} color 55 deactivate
+      }
     }
-    Fl_Value_Input val_Markup {
-      callback cb_markup
-      xywh {310 374 180 27}
-    }
-    Fl_Value_Input val_Price {
-      xywh {310 409 180 27}
-    }
-    Fl_Text_Editor txt_Notes {
+    Fl_Input txt_Notes {
       label {Notes:}
-      xywh {190 460 300 85} align 5
+      xywh {170 377 230 172} type Multiline align 5
+    }
+    Fl_Group {} {
+      label {Other Options} open
+      xywh {421 377 120 172} box RFLAT_BOX color 23 align 5
+    } {
+      Fl_Check_Button chk_NoBrickmold {
+        label {No Brickmold}
+        callback cb_update
+        xywh {428 385 106 25} down_box DOWN_BOX
+      }
+      Fl_Check_Button chk_DeadBolt {
+        label {Dead Bolt}
+        callback cb_update
+        xywh {428 411 106 25} down_box DOWN_BOX
+      }
+      Fl_Check_Button chk_DentilShelf {
+        label {Dentil Shelf}
+        callback cb_update
+        xywh {428 437 106 25} down_box DOWN_BOX
+      }
+      Fl_Check_Button chk_OutswingSill {
+        label {Outswing Sill}
+        callback cb_update
+        xywh {428 463 106 24} down_box DOWN_BOX
+      }
+      Fl_Check_Button chk_ADASill {
+        label {ADA Sill}
+        callback cb_update
+        xywh {428 489 106 25} down_box DOWN_BOX
+      }
+      Fl_Check_Button chk_SpringHinge {
+        label {Spring Hinge}
+        callback cb_update
+        xywh {428 515 106 25} down_box DOWN_BOX
+      }
+    }
+    Fl_Group {} {
+      label Price open
+      xywh {561 377 231 172} box RFLAT_BOX color 23 align 5
+    } {
+      Fl_Value_Output opt_Cost {
+        xywh {693 386 73 26} color 55 deactivate
+      }
+      Fl_Value_Input val_Markup {
+        label {Percent Markup:}
+        callback cb_markup
+        xywh {693 417 73 27}
+      }
+      Fl_Value_Input val_LaborCost {
+        label {Labor Cost:}
+        callback cb_labor
+        xywh {693 450 73 27}
+      }
+      Fl_Value_Input val_Taxes {
+        label {Taxes Percent:}
+        callback cb_labor
+        xywh {693 483 73 27}
+      }
+      Fl_Value_Input val_Total {
+        label {Total:}
+        xywh {693 515 73 26}
+      }
+      Fl_Box {} {
+        label {Cost:}
+        xywh {654 389 40 26} align 20
+      }
     }
     Fl_Group {} {open
-      xywh {0 563 510 57} box FLAT_BOX color 51
+      xywh {0 567 810 57} box FLAT_BOX color 23
     } {
       Fl_Button {} {
         label Print
         callback cb_PrintClicked
-        xywh {278 578 100 27} align 288
+        xywh {560 582 100 27} down_box DOWN_BOX align 288
       }
       Fl_Button {} {
         label Cancel
         callback cb_CancelClicked
-        xywh {388 578 100 27}
+        xywh {670 582 100 27} down_box DOWN_BOX
       }
-    }
-    Fl_Output opt_DoorStyle {
-      label {Door Style/\#:}
-      xywh {25 309 130 27} color 54 align 5
-    }
-    Fl_Output opt_DoorMaterial {
-      label {Door Material:}
-      xywh {25 362 130 27} color 54 align 5
-    }
-    Fl_Output opt_GlassStyle {
-      label {Glass Style/\#:}
-      xywh {25 411 130 27} color 54 align 5
-    }
-    Fl_Output opt_Design {
-      label {Design:}
-      xywh {25 460 130 27} color 54 align 5
-    }
-    Fl_Box {} {
-      label {Location/Name:}
-      xywh {185 22 100 27} align 20
-    }
-    Fl_Box {} {
-      label {Door Size:}
-      xywh {185 57 100 27} align 20
-    }
-    Fl_Box {} {
-      label {Door Swing:}
-      xywh {185 93 100 27} align 20
-    }
-    Fl_Box {} {
-      label {Jamb Size:}
-      xywh {185 129 100 27} align 20
-    }
-    Fl_Box {} {
-      label {Jamb Material:}
-      xywh {185 165 100 27} align 20
-    }
-    Fl_Box {} {
-      label {Sill:}
-      xywh {185 200 100 27} align 20
-    }
-    Fl_Box {} {
-      label {Percent Markup:}
-      xywh {185 374 100 27} align 20
-    }
-    Fl_Box boxDoorImage {
-      xywh {25 28 130 251} box THIN_UP_FRAME
-    }
-    Fl_Box {} {
-      label {Price:}
-      xywh {185 409 100 27} align 20
-    }
-    Fl_Box {} {
-      label {Cost:}
-      xywh {185 339 100 27} align 20
-    }
-    Fl_Box {} {
-      label {Hinge Color:}
-      xywh {185 305 100 27} align 20
     }
   }
   code {infoDialogReady();} {}
 } 
 
-Function {make_print_dialog()} {open
-} {
+Function {make_print_dialog()} {} {
   Fl_Window {} {
     label {Print Preview} open
-    xywh {516 30 656 720} type Double color 7 align 80 visible
+    xywh {703 40 655 720} type Double color 7 align 80 visible
   } {
     Fl_Group grp_PrintGroup {open
-      xywh {0 0 655 648}
+      xywh {0 0 655 658}
     } {
+      Fl_Box opt_Customer {
+        xywh {400 47 205 27} labelfont 8 align 20
+      }
+      Fl_Box opt_Job {
+        xywh {400 73 205 27} labelfont 8 align 20
+      }
+      Fl_Box opt_Date {
+        xywh {400 99 205 27} labelfont 8 align 20
+      }
+      Fl_Box box_Print_DoorImage {
+        xywh {470 163 130 251} box THIN_UP_FRAME labelfont 8
+      }
+      Fl_Box opt_Print_LocationName {
+        xywh {150 163 205 27} labelfont 8 align 20
+      }
+      Fl_Box opt_Print_DoorSize {
+        xywh {150 213 205 27} labelfont 8 align 20
+      }
+      Fl_Box opt_Print_DoorMaterial {
+        xywh {150 248 205 27} labelfont 8 align 20
+      }
+      Fl_Box opt_Print_DoorStyle {
+        xywh {150 284 205 27} labelfont 8 align 20
+      }
+      Fl_Box opt_Print_DoorSwing {
+        xywh {150 320 205 27} labelfont 8 align 20
+      }
+      Fl_Box opt_Print_DoorDesign {
+        xywh {150 355 205 27} labelfont 8 align 20
+      }
+      Fl_Box opt_Print_JambSize {
+        xywh {150 391 205 27} labelfont 8 align 20
+      }
+      Fl_Box opt_Print_JambMaterial {
+        xywh {150 427 205 27} labelfont 8 align 20
+      }
+      Fl_Box opt_Print_Sill {
+        xywh {150 462 205 27} labelfont 8 align 20
+      }
+      Fl_Box opt_Print_GlassStyle {
+        xywh {150 498 205 27} labelfont 8 align 20
+      }
+      Fl_Box opt_Print_HingeColor {
+        xywh {150 534 205 27} labelfont 8 align 20
+      }
+      Fl_Box opt_Print_Price {
+        xywh {150 610 205 27} labelfont 8 align 20
+      }
+      Fl_Box opt_Print_Notes {
+        xywh {370 462 230 175} box EMBOSSED_FRAME labelfont 8 align 149
+      }
+      Fl_Check_Button chk_Print_NoBrickmold {
+        xywh {365 190 100 25} down_box PLASTIC_DOWN_BOX value 1 labelfont 8 deactivate
+      }
+      Fl_Check_Button chk_Print_DeadBolt {
+        xywh {365 212 100 25} down_box PLASTIC_DOWN_BOX labelfont 8 deactivate
+      }
+      Fl_Check_Button chk_Print_DentilShelf {
+        xywh {365 247 100 25} down_box PLASTIC_DOWN_BOX labelfont 8 deactivate
+      }
+      Fl_Check_Button chk_Print_OutswingSill {
+        xywh {365 270 100 24} down_box PLASTIC_DOWN_BOX labelfont 8 deactivate
+      }
+      Fl_Check_Button chk_Print_ADASill {
+        xywh {365 291 100 25} down_box PLASTIC_DOWN_BOX labelfont 8 deactivate
+      }
+      Fl_Check_Button chk_Print_SpringHinge {
+        xywh {365 313 100 25} down_box PLASTIC_DOWN_BOX labelfont 8 deactivate
+      }
       Fl_Box opt_CompanyInfo {
         label {House of Glass
 167 E. 800 S.
@@ -409,24 +401,12 @@ Ephraim, UT 84627
         xywh {315 47 75 27} labelfont 8 align 20
       }
       Fl_Box {} {
-        label _________________________
-        xywh {400 47 205 27} labelfont 8 align 20
-      }
-      Fl_Box {} {
         label {Job:}
         xywh {315 73 75 27} labelfont 8 align 20
       }
       Fl_Box {} {
-        label _________________________
-        xywh {400 73 205 27} labelfont 8 align 20
-      }
-      Fl_Box {} {
         label {Date:}
         xywh {315 99 75 27} labelfont 8 align 20
-      }
-      Fl_Box {} {
-        label _________________________
-        xywh {400 99 205 27} labelfont 8 align 20
       }
       Fl_Box {} {
         xywh {35 145 590 2} box FLAT_BOX color 41 labelfont 8
@@ -441,108 +421,94 @@ Ephraim, UT 84627
       }
       Fl_Box {} {
         label {Door Material:}
-        xywh {50 249 100 27} labelfont 8 align 20
+        xywh {50 248 100 27} labelfont 8 align 20
       }
       Fl_Box {} {
         label {Door Style/\#:}
-        xywh {50 285 100 27} labelfont 8 align 20
+        xywh {50 284 100 27} labelfont 8 align 20
       }
       Fl_Box {} {
         label {Door Swing:}
-        xywh {50 321 100 27} labelfont 8 align 20
+        xywh {50 320 100 27} labelfont 8 align 20
       }
       Fl_Box {} {
         label {Jamb Size:}
-        xywh {50 357 100 27} labelfont 8 align 20
+        xywh {50 391 100 27} labelfont 8 align 20
       }
       Fl_Box {} {
         label {Jamb Material:}
-        xywh {50 394 100 27} labelfont 8 align 20
+        xywh {50 427 100 27} labelfont 8 align 20
       }
       Fl_Box {} {
         label {Sill:}
-        xywh {50 430 100 27} labelfont 8 align 20
-      }
-      Fl_Box {} {
-        label {Brickmold:}
-        xywh {50 466 100 27} labelfont 8 align 20
-      }
-      Fl_Box {} {
-        label {Dead Bolt:}
-        xywh {50 502 100 27} labelfont 8 align 20
+        xywh {50 462 100 27} labelfont 8 align 20
       }
       Fl_Box {} {
         label {Glass Style/\#:}
-        xywh {50 538 100 27} labelfont 8 align 20
+        xywh {50 498 100 27} labelfont 8 align 20
       }
       Fl_Box {} {
         label {Hinge Color:}
-        xywh {50 574 100 27} labelfont 8 align 20
+        xywh {50 534 100 27} labelfont 8 align 20
       }
       Fl_Box {} {
         label {Price:}
         xywh {50 610 100 27} labelfont 8 align 20
       }
-      Fl_Box box_Print_DoorImage {
-        xywh {430 219 130 251} box THIN_UP_FRAME labelfont 8
+      Fl_Box {} {
+        label {Notes:}
+        xywh {370 442 100 18} labelfont 8 align 20
       }
-      Fl_Box opt_Print_LocationName {
-        xywh {160 163 205 27} labelfont 8 align 20
+      Fl_Box {} {
+        label {Other Options}
+        xywh {365 163 100 27} labelfont 10 align 20
       }
-      Fl_Box opt_Print_DoorSize {
-        xywh {160 213 205 27} labelfont 8 align 20
+      Fl_Box {} {
+        label {Door Design:}
+        xywh {50 355 100 27} labelfont 8 align 20
       }
-      Fl_Box opt_Print_DoorMaterial {
-        xywh {160 249 205 27} labelfont 8 align 20
+      Fl_Box {} {
+        label {Spring Hinge}
+        xywh {380 312 85 27} labelfont 8 align 20
       }
-      Fl_Box opt_Print_DoorStyle {
-        xywh {160 285 205 27} labelfont 8 align 20
+      Fl_Box {} {
+        label {ADA Sill}
+        xywh {380 290 85 27} labelfont 8 align 20
       }
-      Fl_Box opt_Print_DoorSwing {
-        xywh {160 321 205 27} labelfont 8 align 20
+      Fl_Box {} {
+        label {Outswing Sill}
+        xywh {380 269 85 27} labelfont 8 align 20
       }
-      Fl_Box opt_Print_JambSize {
-        xywh {160 357 205 27} labelfont 8 align 20
+      Fl_Box {} {
+        label {Dentil Shelf}
+        xywh {380 246 85 27} labelfont 8 align 20
       }
-      Fl_Box opt_Print_JambMaterial {
-        xywh {160 394 205 27} labelfont 8 align 20
+      Fl_Box {} {
+        label {Dead Bolt}
+        xywh {380 211 85 27} labelfont 8 align 20
       }
-      Fl_Box opt_Print_Sill {
-        xywh {160 430 205 27} labelfont 8 align 20
-      }
-      Fl_Box opt_Print_Brickmold {
-        xywh {160 466 205 27} labelfont 8 align 20
-      }
-      Fl_Box opt_Print_DeadBolt {
-        xywh {160 502 205 27} labelfont 8 align 20
-      }
-      Fl_Box opt_Print_GlassStyle {
-        xywh {160 538 205 27} labelfont 8 align 20
-      }
-      Fl_Box opt_Print_Price {
-        xywh {160 610 205 27} labelfont 8 align 20
-      }
-      Fl_Box opt_Print_HingeColor {
-        xywh {160 574 205 27} labelfont 8 align 20
+      Fl_Box {} {
+        label {No Brickmould}
+        xywh {380 188 85 27} labelfont 8 align 20
       }
     }
     Fl_Group {} {open
-      xywh {0 658 655 57} box FLAT_BOX color 51
+      xywh {0 663 655 57} box FLAT_BOX color 23
     } {
       Fl_Button {} {
         label Print
         callback cb_Preview_PrintClicked
-        xywh {425 673 100 27} align 16
+        xywh {425 678 100 27} down_box DOWN_BOX align 16
       }
       Fl_Button {} {
         label Cancel
         callback cb_Preview_CancelClicked
-        xywh {535 673 100 27}
+        xywh {535 678 100 27} down_box DOWN_BOX
       }
       Fl_Button {} {
         label {Make PDF}
         callback cb_Preview_MakePDFClicked
-        xywh {315 673 100 27} align 16
+        xywh {315 678 100 27} down_box DOWN_BOX align 16
       }
     }
   }

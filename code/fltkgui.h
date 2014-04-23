@@ -17,6 +17,7 @@ public:
   Resize_Window(int W, int H, const char *l = 0);
   Resize_Window(int X, int Y, int W, int H, const char *l = 0);
   void resize(int X,int Y,int W,int H);
+  sqlite3 *db; 
 };
 extern Resize_Window *wnd_main;
 #include <FL/Fl_Group.H>
@@ -24,69 +25,88 @@ extern Fl_Group *grp_Sidebar;
 #include <FL/Fl_Input.H>
 extern void cb_SearchTextChanged(Fl_Input*, void*);
 extern Fl_Input *ipt_style;
-extern Fl_Input *ipt_size;
 extern Fl_Input *ipt_material;
+extern Fl_Input *ipt_design;
 extern Fl_Input *ipt_glass_style;
 #include <FL/Fl_Browser.H>
 extern void cb_MostUsedItemSelected(Fl_Browser*, void*);
 extern Fl_Browser *bsr_MostUsed;
-extern void cb_grid(Fl_Group*, void*);
 extern Fl_Group *grp_DoorGrid;
 #include <FL/Fl_Scroll.H>
 extern Fl_Scroll *scroll_DoorGrid;
 #include <FL/Fl_Double_Window.H>
-#include <FL/Fl_Button.H>
 #include <FL/Fl_Box.H>
-#include <FL/Fl_Pack.H>
-#include <FL/Fl_Menu_Button.H>
-#include <FL/Fl_Check_Button.H>
-#include <FL/Fl_Text_Editor.H>
-Fl_Double_Window* make_door_info_dialog_old(Door door);
-extern Fl_Input *txt_LocationName;
-#include <FL/Fl_Choice.H>
-extern Fl_Choice *lst_DoorSize;
-extern Fl_Choice *lst_DoorSwing;
-extern Fl_Choice *lst_JambSize;
-extern Fl_Choice *lst_JambMaterial;
-extern Fl_Choice *lst_Sill;
-extern void cb_update(Fl_Check_Button*, void*);
-extern Fl_Check_Button *chk_BrickMoldYes;
-extern Fl_Check_Button *chk_BrickMoldNo;
-extern Fl_Check_Button *chk_DeadBoltYes;
-extern Fl_Check_Button *chk_DeadBoltNo;
-extern Fl_Choice *lst_HingeColor;
-#include <FL/Fl_Value_Output.H>
-extern Fl_Value_Output *val_Cost;
-#include <FL/Fl_Value_Input.H>
-extern void cb_markup(Fl_Value_Input*, void*);
-extern Fl_Value_Input *val_Markup;
-extern Fl_Value_Input *val_Price;
-extern Fl_Text_Editor *txt_Notes;
-extern void cb_PrintClicked(Fl_Button*, void*);
-extern void cb_CancelClicked(Fl_Button*, void*);
+extern Fl_Box *boxDoorImage;
 #include <FL/Fl_Output.H>
 extern Fl_Output *opt_DoorStyle;
 extern Fl_Output *opt_DoorMaterial;
 extern Fl_Output *opt_GlassStyle;
-extern Fl_Output *opt_Design;
-extern Fl_Box *boxDoorImage;
-Fl_Double_Window* make_door_info_dialog(Door door);
+extern Fl_Output *opt_DoorDesign;
+#include <FL/Fl_Value_Output.H>
+extern Fl_Value_Output *opt_DoorCost;
+#include "Door_Size_Chooser.h"
+extern void cb_update(Door_Size_Chooser*, void*);
+extern Door_Size_Chooser *lst_DoorSize;
+#include <FL/Fl_Choice.H>
+extern void cb_update(Fl_Choice*, void*);
+extern Fl_Choice *lst_DoorSwing;
+extern Fl_Choice *lst_Sill;
+extern Fl_Choice *lst_HingeColor;
+extern Fl_Input *txt_LocationName;
+extern Fl_Input *txt_Customer;
+extern Fl_Input *txt_Job;
+extern Fl_Input *txt_Date;
+extern Fl_Choice *lst_JambMaterial;
+extern Fl_Choice *lst_JambSize;
+#include <FL/Fl_Check_Button.H>
+extern void cb_NeedsRipping_click(Fl_Check_Button*, void*);
+extern Fl_Check_Button *chk_NeedsRipping;
+extern Fl_Input *txt_CustomRipSize;
+extern Fl_Input *txt_Notes;
+extern void cb_update(Fl_Check_Button*, void*);
+extern Fl_Check_Button *chk_NoBrickmold;
+extern Fl_Check_Button *chk_DeadBolt;
+extern Fl_Check_Button *chk_DentilShelf;
+extern Fl_Check_Button *chk_OutswingSill;
+extern Fl_Check_Button *chk_ADASill;
+extern Fl_Check_Button *chk_SpringHinge;
+extern Fl_Value_Output *opt_Cost;
+#include <FL/Fl_Value_Input.H>
+extern void cb_markup(Fl_Value_Input*, void*);
+extern Fl_Value_Input *val_Markup;
+extern void cb_labor(Fl_Value_Input*, void*);
+extern Fl_Value_Input *val_LaborCost;
+extern Fl_Value_Input *val_Taxes;
+extern Fl_Value_Input *val_Total;
+#include <FL/Fl_Button.H>
+extern void cb_PrintClicked(Fl_Button*, void*);
+extern void cb_CancelClicked(Fl_Button*, void*);
+Fl_Double_Window* make_door_info_dialog();
 extern Fl_Group *grp_PrintGroup;
-extern Fl_Box *opt_CompanyInfo;
+extern Fl_Box *opt_Customer;
+extern Fl_Box *opt_Job;
+extern Fl_Box *opt_Date;
 extern Fl_Box *box_Print_DoorImage;
 extern Fl_Box *opt_Print_LocationName;
 extern Fl_Box *opt_Print_DoorSize;
 extern Fl_Box *opt_Print_DoorMaterial;
 extern Fl_Box *opt_Print_DoorStyle;
 extern Fl_Box *opt_Print_DoorSwing;
+extern Fl_Box *opt_Print_DoorDesign;
 extern Fl_Box *opt_Print_JambSize;
 extern Fl_Box *opt_Print_JambMaterial;
 extern Fl_Box *opt_Print_Sill;
-extern Fl_Box *opt_Print_Brickmold;
-extern Fl_Box *opt_Print_DeadBolt;
 extern Fl_Box *opt_Print_GlassStyle;
-extern Fl_Box *opt_Print_Price;
 extern Fl_Box *opt_Print_HingeColor;
+extern Fl_Box *opt_Print_Price;
+extern Fl_Box *opt_Print_Notes;
+extern Fl_Check_Button *chk_Print_NoBrickmold;
+extern Fl_Check_Button *chk_Print_DeadBolt;
+extern Fl_Check_Button *chk_Print_DentilShelf;
+extern Fl_Check_Button *chk_Print_OutswingSill;
+extern Fl_Check_Button *chk_Print_ADASill;
+extern Fl_Check_Button *chk_Print_SpringHinge;
+extern Fl_Box *opt_CompanyInfo;
 extern void cb_Preview_PrintClicked(Fl_Button*, void*);
 extern void cb_Preview_CancelClicked(Fl_Button*, void*);
 extern void cb_Preview_MakePDFClicked(Fl_Button*, void*);

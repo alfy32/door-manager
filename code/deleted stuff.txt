@@ -1,0 +1,26 @@
+Extra Stuff
+
+void cb_grid(Fl_Group*, void*)
+{
+    sqlite3 * db = (sqlite3*)(wnd_main->user_data());
+
+    scroll_DoorGrid->clear();
+    scroll_DoorGrid->redraw();
+    restartDoors();
+
+    string search = "WHERE style LIKE '";
+    search += ipt_style->value();
+    search += "%' AND ";
+    search += "material LIKE '";
+    search += ipt_material->value();
+    search += "%' AND ";
+    search += "design LIKE '";
+    search += ipt_design->value();
+    search += "%' AND ";
+    search += "glass LIKE '";
+    search += ipt_glass_style->value();
+    search += "%'";
+
+
+    runSQL(db, search.c_str());
+}
