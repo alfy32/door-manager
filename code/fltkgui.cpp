@@ -35,8 +35,6 @@ Fl_Input *ipt_glass_style=(Fl_Input *)0;
 
 Fl_Browser *bsr_MostUsed=(Fl_Browser *)0;
 
-Fl_Button *btn_settings=(Fl_Button *)0;
-
 Fl_Group *grp_DoorGrid=(Fl_Group *)0;
 
 Fl_Scroll *scroll_DoorGrid=(Fl_Scroll *)0;
@@ -78,7 +76,7 @@ int main(int argc, char **argv) {
         ipt_glass_style->callback((Fl_Callback*)cb_SearchTextChanged);
         ipt_glass_style->when(FL_WHEN_CHANGED);
       } // Fl_Input* ipt_glass_style
-      { bsr_MostUsed = new Fl_Browser(25, 235, 210, 245);
+      { bsr_MostUsed = new Fl_Browser(25, 235, 205, 285);
         bsr_MostUsed->type(1);
         bsr_MostUsed->box(FL_GTK_THIN_DOWN_BOX);
         bsr_MostUsed->color((Fl_Color)55);
@@ -86,9 +84,6 @@ int main(int argc, char **argv) {
         bsr_MostUsed->deactivate();
         Fl_Group::current()->resizable(bsr_MostUsed);
       } // Fl_Browser* bsr_MostUsed
-      { btn_settings = new Fl_Button(25, 498, 210, 27, "Settings");
-        btn_settings->callback((Fl_Callback*)cb_btn_settings);
-      } // Fl_Button* btn_settings
       grp_Sidebar->end();
     } // Fl_Group* grp_Sidebar
     { grp_DoorGrid = new Fl_Group(260, 0, 520, 550);
@@ -272,7 +267,7 @@ Fl_Double_Window* make_door_info_dialog() {
       o->box(FL_RFLAT_BOX);
       o->color((Fl_Color)23);
       o->align(Fl_Align(FL_ALIGN_TOP_LEFT));
-      { chk_NoBrickmold = new Fl_Check_Button(428, 385, 106, 25, "No Brickmold");
+      { chk_NoBrickmold = new Fl_Check_Button(428, 385, 106, 25, "No Brickmould");
         chk_NoBrickmold->down_box(FL_DOWN_BOX);
         chk_NoBrickmold->callback((Fl_Callback*)cb_update);
       } // Fl_Check_Button* chk_NoBrickmold
@@ -532,6 +527,10 @@ Fl_Box *img_Print_swing=(Fl_Box *)0;
 
 Fl_Box *opt_Print_Swing=(Fl_Box *)0;
 
+Fl_Box *opt_Print_Brickmould=(Fl_Box *)0;
+
+Fl_Box *opt_Print_DeadBolt=(Fl_Box *)0;
+
 Fl_Double_Window* make_print_dialog() {
   Fl_Double_Window* w;
   { Fl_Double_Window* o = new Fl_Double_Window(655, 800, "Print Preview");
@@ -682,7 +681,7 @@ Fl_Double_Window* make_print_dialog() {
         o->labelfont(8);
         o->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
       } // Fl_Box* o
-      { Fl_Box* o = new Fl_Box(50, 535, 100, 27, "Other Options");
+      { Fl_Box* o = new Fl_Box(50, 578, 100, 27, "Other Options");
         o->labelfont(10);
         o->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
       } // Fl_Box* o
@@ -690,7 +689,7 @@ Fl_Double_Window* make_print_dialog() {
         o->labelfont(8);
         o->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
       } // Fl_Box* o
-      { label_other = new Fl_Box(55, 560, 85, 20);
+      { label_other = new Fl_Box(55, 600, 85, 20);
         label_other->labelfont(8);
         label_other->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
       } // Fl_Box* label_other
@@ -720,6 +719,22 @@ Fl_Double_Window* make_print_dialog() {
         opt_Print_Swing->labelfont(8);
         opt_Print_Swing->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
       } // Fl_Box* opt_Print_Swing
+      { Fl_Box* o = new Fl_Box(50, 528, 100, 27, "Bickmould:");
+        o->labelfont(8);
+        o->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
+      } // Fl_Box* o
+      { Fl_Box* o = new Fl_Box(50, 554, 100, 27, "Dead Bolt:");
+        o->labelfont(8);
+        o->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
+      } // Fl_Box* o
+      { opt_Print_Brickmould = new Fl_Box(150, 528, 205, 27);
+        opt_Print_Brickmould->labelfont(8);
+        opt_Print_Brickmould->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
+      } // Fl_Box* opt_Print_Brickmould
+      { opt_Print_DeadBolt = new Fl_Box(150, 554, 205, 27);
+        opt_Print_DeadBolt->labelfont(8);
+        opt_Print_DeadBolt->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
+      } // Fl_Box* opt_Print_DeadBolt
       grp_PrintGroup->end();
     } // Fl_Group* grp_PrintGroup
     { Fl_Group* o = new Fl_Group(0, 743, 655, 57);

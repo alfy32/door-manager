@@ -7,8 +7,8 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/Door Manager" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Debug/" />
+				<Option output="bin\Debug\Door Manager" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj\Debug\" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
@@ -16,8 +16,8 @@
 				</Compiler>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/Door Manager" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Release/" />
+				<Option output="bin\Release\Door Manager" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj\Release\" />
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Compiler>
@@ -29,7 +29,6 @@
 		<Compiler>
 			<Add option="-mms-bitfields" />
 			<Add option="-DWIN32" />
-			<Add directory="../libraries" />
 		</Compiler>
 		<Linker>
 			<Add library="fltk_images" />
@@ -48,7 +47,6 @@
 			<Add library="kernel32" />
 			<Add library="alfy" />
 			<Add library="si" />
-			<Add directory="../libraries/lib" />
 		</Linker>
 		<Unit filename="Alfy_SQL.cpp" />
 		<Unit filename="Alfy_SQL.h" />

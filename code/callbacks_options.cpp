@@ -230,19 +230,31 @@ void cb_PrintClicked(Fl_Button*, void*)
     int y = label_other->y(), x = label_other->x(), h = label_other->h(), w = label_other->w();
 
     if(chk_NoBrickmold->value())
+        opt_Print_Brickmould->copy_label("No");
+    else
+        opt_Print_Brickmould->copy_label("Yes");
+    /*
     {
         Fl_Box * o = new Fl_Box(x,y,w,h,"No Brickmould");
         o->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
         grp_PrintGroup->add(o);
         y += h;
     }
+    */
+
     if(chk_DeadBolt->value())
+        opt_Print_DeadBolt->copy_label("Yes");
+    else
+        opt_Print_DeadBolt->copy_label("No");
+    /*
     {
         Fl_Box * o = new Fl_Box(x,y,w,h,"Dead Bolt");
         o->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
         grp_PrintGroup->add(o);
         y += h;
     }
+    */
+
     if(chk_DentilShelf->value())
     {
         Fl_Box * o = new Fl_Box(x,y,w,h,"Dentil Shelf");

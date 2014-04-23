@@ -17,7 +17,7 @@ public:
   Resize_Window(int W, int H, const char *l = 0);
   Resize_Window(int X, int Y, int W, int H, const char *l = 0);
   void resize(int X,int Y,int W,int H);
-  Alfy_SQL db; 
+  Alfy_SQL db;
 };
 extern Resize_Window *wnd_main;
 #include <FL/Fl_Group.H>
@@ -31,9 +31,6 @@ extern Fl_Input *ipt_glass_style;
 #include <FL/Fl_Browser.H>
 extern void cb_MostUsedItemSelected(Fl_Browser*, void*);
 extern Fl_Browser *bsr_MostUsed;
-#include <FL/Fl_Button.H>
-extern void cb_btn_settings(Fl_Button*, void*);
-extern Fl_Button *btn_settings;
 extern Fl_Group *grp_DoorGrid;
 #include <FL/Fl_Scroll.H>
 extern Fl_Scroll *scroll_DoorGrid;
@@ -78,6 +75,7 @@ extern Fl_Value_Input *val_Markup;
 extern Fl_Value_Input *val_LaborCost;
 extern Fl_Value_Input *val_Taxes;
 extern Fl_Value_Input *val_Total;
+#include <FL/Fl_Button.H>
 extern void cb_PrintClicked(Fl_Button*, void*);
 extern void cb_CancelClicked(Fl_Button*, void*);
 Fl_Double_Window* make_door_info_dialog();
@@ -105,9 +103,11 @@ extern Fl_Box *opt_Print_NetFrame;
 extern Fl_Box *opt_Print_RoughOpening;
 extern Fl_Box *img_Print_swing;
 extern Fl_Box *opt_Print_Swing;
+extern Fl_Box *opt_Print_Brickmould;
+extern Fl_Box *opt_Print_DeadBolt;
 extern void cb_Preview_PrintClicked(Fl_Button*, void*);
 extern void cb_Preview_CancelClicked(Fl_Button*, void*);
 extern void cb_Preview_MakePDFClicked(Fl_Button*, void*);
 Fl_Double_Window* make_print_dialog();
-void infoDialogReady(); 
+void infoDialogReady();
 #endif
