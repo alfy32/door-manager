@@ -620,3 +620,492 @@
 	"fltkgui.h"
 	<FL/Fl_JPEG_Image.H>
 
+1337800885 source:c:\users\alfy\skydrive\programming\door manager prototype 5 source\alfy_sql.cpp
+	"Alfy_SQL.h"
+
+1337801362 c:\users\alfy\skydrive\programming\door manager prototype 5 source\alfy_sql.h
+	<iostream>
+	<string>
+	"sqlite3.h"
+
+1331837286 c:\users\alfy\skydrive\programming\door manager prototype 5 source\sqlite3.h
+	<stdarg.h>
+
+1340745204 source:c:\users\alfy\skydrive\programming\door manager prototype 5 source\doorbutton.cpp
+	"DoorButton.h"
+	"Alfy_SQL.h"
+
+1337703998 c:\users\alfy\skydrive\programming\door manager prototype 5 source\doorbutton.h
+	<fstream>
+	<string>
+	"door.h"
+	<FL/Fl_Button.H>
+	<FL/Fl_Jpeg_Image.H>
+
+1334422618 c:\users\alfy\skydrive\programming\door manager prototype 5 source\door.h
+	<fstream>
+	<string>
+
+1337639552 source:c:\users\alfy\skydrive\programming\door manager prototype 5 source\doorsize.cpp
+	"DoorSize.h"
+
+1337633175 c:\users\alfy\skydrive\programming\door manager prototype 5 source\doorsize.h
+	<string>
+	<stdlib.h>
+	<iostream>
+
+1337827735 source:c:\users\alfy\skydrive\programming\door manager prototype 5 source\door_size_chooser.cpp
+	"Door_Size_Chooser.h"
+
+1337641748 c:\users\alfy\skydrive\programming\door manager prototype 5 source\door_size_chooser.h
+	<vector>
+	<string>
+	<stdlib.h>
+	<FL/Fl_Choice.H>
+	"DoorSize.h"
+	"sqlite3.h"
+
+1340745259 source:c:\users\alfy\skydrive\programming\door manager prototype 5 source\callbacks_main.cpp
+	"fltkgui.h"
+
+1340392328 c:\users\alfy\skydrive\programming\door manager prototype 5 source\fltkgui.h
+	<FL/Fl.H>
+	<SI/Si_Button.H>
+	"Alfy_SQL.h"
+	"functions.h"
+	"door.h"
+	<iostream>
+	<FL/Fl_Double_Window.H>
+	<FL/Fl_Choice.H>
+	<FL/Fl_Group.H>
+	<FL/Fl_Input.H>
+	<FL/Fl_Browser.H>
+	<FL/Fl_Scroll.H>
+	<FL/Fl_Double_Window.H>
+	<FL/Fl_Box.H>
+	<FL/Fl_Output.H>
+	<FL/Fl_Value_Output.H>
+	"Door_Size_Chooser.h"
+	<FL/Fl_Choice.H>
+	<FL/Fl_Check_Button.H>
+	<FL/Fl_Value_Input.H>
+	<FL/Fl_Button.H>
+
+1337828332 c:\users\alfy\skydrive\programming\door manager prototype 5 source\functions.h
+	"fltkgui.h"
+	"Alfy_SQL.h"
+	"sqlite3.h"
+	"door.h"
+	"DoorButton.h"
+	<string>
+	<FL/Fl_Double_Window.H>
+	<FL/FL_JPEG_IMAGE.H>
+	<FL/Fl_Printer.H>
+	<FL/Fl_PostScript.H>
+	<stdio.h>
+	<stdlib.h>
+
+1336531883 source:c:\users\alfy\skydrive\programming\door manager prototype 5 source\callbacks_print.cpp
+	"fltkgui.h"
+	<FL/Fl_Printer.H>
+
+1334432110 source:c:\users\alfy\skydrive\programming\door manager prototype 5 source\door.cpp
+	"door.h"
+
+1340392328 source:c:\users\alfy\skydrive\programming\door manager prototype 5 source\fltkgui.cpp
+	"fltkgui.h"
+	<FL/Fl_JPEG_Image.H>
+
+1337371644 source:c:\users\alfy\skydrive\programming\door manager prototype 5 source\functions.cpp
+	"functions.h"
+
+1337816002 source:c:\users\alfy\skydrive\programming\door manager prototype 5 source\functions_main.cpp
+	"functions.h"
+	<FL/FL_JPEG_IMAGE.H>
+
+1337827532 source:c:\users\alfy\skydrive\programming\door manager prototype 5 source\functions_options.cpp
+	"functions.h"
+	<FL/FL_JPEG_IMAGE.H>
+
+1336618517 source:c:\users\alfy\skydrive\programming\door manager prototype 5 source\functions_print.cpp
+	"functions.h"
+	<FL/FL_JPEG_IMAGE.H>
+
+1335893212 source:c:\users\alfy\skydrive\programming\door manager prototype 5 source\resources.rc
+
+1331837286 source:c:\users\alfy\skydrive\programming\door manager prototype 5 source\sqlite3.c
+	"config.h"
+	<stdint.h>
+	<inttypes.h>
+	<tcl.h>
+	<stdarg.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	<stddef.h>
+	<windows.h>
+	<os2safe.h>
+	<os2.h>
+	<uconv.h>
+	<ctype.h>
+	<time.h>
+	<sys/sysctl.h>
+	<malloc/malloc.h>
+	<libkern/OSAtomic.h>
+	<malloc.h>
+	<pthread.h>
+	<math.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<fcntl.h>
+	<unistd.h>
+	<sys/time.h>
+	<errno.h>
+	<sys/mman.h>
+	<sys/ioctl.h>
+	<semaphore.h>
+	<limits.h>
+	<sys/file.h>
+	<sys/param.h>
+	<sys/mount.h>
+	<utime.h>
+	<dlfcn.h>
+	<sys/cygwin.h>
+	"sqlite3rtree.h"
+	<unicode/utypes.h>
+	<unicode/uregex.h>
+	<unicode/ustring.h>
+	<unicode/ucol.h>
+	<unicode/ubrk.h>
+	<unicode/utf16.h>
+
+1340392372 source:c:\users\alfy\skydrive\programming\door manager prototype 5 source\callbacks_options.cpp
+	"fltkgui.h"
+
+1337800885 source:c:\users\alfy\skydrive\programming\door manager\door manager prototype 5 source\alfy_sql.cpp
+	"Alfy_SQL.h"
+
+1337801362 c:\users\alfy\skydrive\programming\door manager\door manager prototype 5 source\alfy_sql.h
+	<iostream>
+	<string>
+	"sqlite3.h"
+
+1331837286 c:\users\alfy\skydrive\programming\door manager\door manager prototype 5 source\sqlite3.h
+	<stdarg.h>
+
+1340745461 source:c:\users\alfy\skydrive\programming\door manager\door manager prototype 5 source\doorbutton.cpp
+	"DoorButton.h"
+	"Alfy_SQL.h"
+
+1337703998 c:\users\alfy\skydrive\programming\door manager\door manager prototype 5 source\doorbutton.h
+	<fstream>
+	<string>
+	"door.h"
+	<FL/Fl_Button.H>
+	<FL/Fl_Jpeg_Image.H>
+
+1334422618 c:\users\alfy\skydrive\programming\door manager\door manager prototype 5 source\door.h
+	<fstream>
+	<string>
+
+1337639552 source:c:\users\alfy\skydrive\programming\door manager\door manager prototype 5 source\doorsize.cpp
+	"DoorSize.h"
+
+1337633175 c:\users\alfy\skydrive\programming\door manager\door manager prototype 5 source\doorsize.h
+	<string>
+	<stdlib.h>
+	<iostream>
+
+1337827735 source:c:\users\alfy\skydrive\programming\door manager\door manager prototype 5 source\door_size_chooser.cpp
+	"Door_Size_Chooser.h"
+
+1337641748 c:\users\alfy\skydrive\programming\door manager\door manager prototype 5 source\door_size_chooser.h
+	<vector>
+	<string>
+	<stdlib.h>
+	<FL/Fl_Choice.H>
+	"DoorSize.h"
+	"sqlite3.h"
+
+1340745259 source:c:\users\alfy\skydrive\programming\door manager\door manager prototype 5 source\callbacks_main.cpp
+	"fltkgui.h"
+
+1340392328 c:\users\alfy\skydrive\programming\door manager\door manager prototype 5 source\fltkgui.h
+	<FL/Fl.H>
+	<SI/Si_Button.H>
+	"Alfy_SQL.h"
+	"functions.h"
+	"door.h"
+	<iostream>
+	<FL/Fl_Double_Window.H>
+	<FL/Fl_Choice.H>
+	<FL/Fl_Group.H>
+	<FL/Fl_Input.H>
+	<FL/Fl_Browser.H>
+	<FL/Fl_Scroll.H>
+	<FL/Fl_Double_Window.H>
+	<FL/Fl_Box.H>
+	<FL/Fl_Output.H>
+	<FL/Fl_Value_Output.H>
+	"Door_Size_Chooser.h"
+	<FL/Fl_Choice.H>
+	<FL/Fl_Check_Button.H>
+	<FL/Fl_Value_Input.H>
+	<FL/Fl_Button.H>
+
+1337828332 c:\users\alfy\skydrive\programming\door manager\door manager prototype 5 source\functions.h
+	"fltkgui.h"
+	"Alfy_SQL.h"
+	"sqlite3.h"
+	"door.h"
+	"DoorButton.h"
+	<string>
+	<FL/Fl_Double_Window.H>
+	<FL/FL_JPEG_IMAGE.H>
+	<FL/Fl_Printer.H>
+	<FL/Fl_PostScript.H>
+	<stdio.h>
+	<stdlib.h>
+
+1340392372 source:c:\users\alfy\skydrive\programming\door manager\door manager prototype 5 source\callbacks_options.cpp
+	"fltkgui.h"
+
+1336531883 source:c:\users\alfy\skydrive\programming\door manager\door manager prototype 5 source\callbacks_print.cpp
+	"fltkgui.h"
+	<FL/Fl_Printer.H>
+
+1334432110 source:c:\users\alfy\skydrive\programming\door manager\door manager prototype 5 source\door.cpp
+	"door.h"
+
+1340392328 source:c:\users\alfy\skydrive\programming\door manager\door manager prototype 5 source\fltkgui.cpp
+	"fltkgui.h"
+	<FL/Fl_JPEG_Image.H>
+
+1337371644 source:c:\users\alfy\skydrive\programming\door manager\door manager prototype 5 source\functions.cpp
+	"functions.h"
+
+1337816002 source:c:\users\alfy\skydrive\programming\door manager\door manager prototype 5 source\functions_main.cpp
+	"functions.h"
+	<FL/FL_JPEG_IMAGE.H>
+
+1337827532 source:c:\users\alfy\skydrive\programming\door manager\door manager prototype 5 source\functions_options.cpp
+	"functions.h"
+	<FL/FL_JPEG_IMAGE.H>
+
+1336618517 source:c:\users\alfy\skydrive\programming\door manager\door manager prototype 5 source\functions_print.cpp
+	"functions.h"
+	<FL/FL_JPEG_IMAGE.H>
+
+1335893212 source:c:\users\alfy\skydrive\programming\door manager\door manager prototype 5 source\resources.rc
+
+1331837286 source:c:\users\alfy\skydrive\programming\door manager\door manager prototype 5 source\sqlite3.c
+	"config.h"
+	<stdint.h>
+	<inttypes.h>
+	<tcl.h>
+	<stdarg.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	<stddef.h>
+	<windows.h>
+	<os2safe.h>
+	<os2.h>
+	<uconv.h>
+	<ctype.h>
+	<time.h>
+	<sys/sysctl.h>
+	<malloc/malloc.h>
+	<libkern/OSAtomic.h>
+	<malloc.h>
+	<pthread.h>
+	<math.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<fcntl.h>
+	<unistd.h>
+	<sys/time.h>
+	<errno.h>
+	<sys/mman.h>
+	<sys/ioctl.h>
+	<semaphore.h>
+	<limits.h>
+	<sys/file.h>
+	<sys/param.h>
+	<sys/mount.h>
+	<utime.h>
+	<dlfcn.h>
+	<sys/cygwin.h>
+	"sqlite3rtree.h"
+	<unicode/utypes.h>
+	<unicode/uregex.h>
+	<unicode/ustring.h>
+	<unicode/ucol.h>
+	<unicode/ubrk.h>
+	<unicode/utf16.h>
+
+1337800885 source:c:\users\alan\skydrive\programming\door manager\door manager prototype 5 source\alfy_sql.cpp
+	"Alfy_SQL.h"
+
+1337801362 c:\users\alan\skydrive\programming\door manager\door manager prototype 5 source\alfy_sql.h
+	<iostream>
+	<string>
+	"sqlite3.h"
+
+1331837286 c:\users\alan\skydrive\programming\door manager\door manager prototype 5 source\sqlite3.h
+	<stdarg.h>
+
+1340745259 source:c:\users\alan\skydrive\programming\door manager\door manager prototype 5 source\callbacks_main.cpp
+	"fltkgui.h"
+
+1340392328 c:\users\alan\skydrive\programming\door manager\door manager prototype 5 source\fltkgui.h
+	<FL/Fl.H>
+	<SI/Si_Button.H>
+	"Alfy_SQL.h"
+	"functions.h"
+	"door.h"
+	<iostream>
+	<FL/Fl_Double_Window.H>
+	<FL/Fl_Choice.H>
+	<FL/Fl_Group.H>
+	<FL/Fl_Input.H>
+	<FL/Fl_Browser.H>
+	<FL/Fl_Scroll.H>
+	<FL/Fl_Double_Window.H>
+	<FL/Fl_Box.H>
+	<FL/Fl_Output.H>
+	<FL/Fl_Value_Output.H>
+	"Door_Size_Chooser.h"
+	<FL/Fl_Choice.H>
+	<FL/Fl_Check_Button.H>
+	<FL/Fl_Value_Input.H>
+	<FL/Fl_Button.H>
+
+1337828332 c:\users\alan\skydrive\programming\door manager\door manager prototype 5 source\functions.h
+	"fltkgui.h"
+	"Alfy_SQL.h"
+	"sqlite3.h"
+	"door.h"
+	"DoorButton.h"
+	<string>
+	<FL/Fl_Double_Window.H>
+	<FL/FL_JPEG_IMAGE.H>
+	<FL/Fl_Printer.H>
+	<FL/Fl_PostScript.H>
+	<stdio.h>
+	<stdlib.h>
+
+1334422618 c:\users\alan\skydrive\programming\door manager\door manager prototype 5 source\door.h
+	<fstream>
+	<string>
+
+1337703998 c:\users\alan\skydrive\programming\door manager\door manager prototype 5 source\doorbutton.h
+	<fstream>
+	<string>
+	"door.h"
+	<FL/Fl_Button.H>
+	<FL/Fl_Jpeg_Image.H>
+
+1337641748 c:\users\alan\skydrive\programming\door manager\door manager prototype 5 source\door_size_chooser.h
+	<vector>
+	<string>
+	<stdlib.h>
+	<FL/Fl_Choice.H>
+	"DoorSize.h"
+	"sqlite3.h"
+
+1337633175 c:\users\alan\skydrive\programming\door manager\door manager prototype 5 source\doorsize.h
+	<string>
+	<stdlib.h>
+	<iostream>
+
+1340392372 source:c:\users\alan\skydrive\programming\door manager\door manager prototype 5 source\callbacks_options.cpp
+	"fltkgui.h"
+
+1336531883 source:c:\users\alan\skydrive\programming\door manager\door manager prototype 5 source\callbacks_print.cpp
+	"fltkgui.h"
+	<FL/Fl_Printer.H>
+
+1334432110 source:c:\users\alan\skydrive\programming\door manager\door manager prototype 5 source\door.cpp
+	"door.h"
+
+1337827735 source:c:\users\alan\skydrive\programming\door manager\door manager prototype 5 source\door_size_chooser.cpp
+	"Door_Size_Chooser.h"
+
+1340745461 source:c:\users\alan\skydrive\programming\door manager\door manager prototype 5 source\doorbutton.cpp
+	"DoorButton.h"
+	"Alfy_SQL.h"
+
+1337639552 source:c:\users\alan\skydrive\programming\door manager\door manager prototype 5 source\doorsize.cpp
+	"DoorSize.h"
+
+1340392328 source:c:\users\alan\skydrive\programming\door manager\door manager prototype 5 source\fltkgui.cpp
+	"fltkgui.h"
+	<FL/Fl_JPEG_Image.H>
+
+1337371644 source:c:\users\alan\skydrive\programming\door manager\door manager prototype 5 source\functions.cpp
+	"functions.h"
+
+1337816002 source:c:\users\alan\skydrive\programming\door manager\door manager prototype 5 source\functions_main.cpp
+	"functions.h"
+	<FL/FL_JPEG_IMAGE.H>
+
+1337827532 source:c:\users\alan\skydrive\programming\door manager\door manager prototype 5 source\functions_options.cpp
+	"functions.h"
+	<FL/FL_JPEG_IMAGE.H>
+
+1336618517 source:c:\users\alan\skydrive\programming\door manager\door manager prototype 5 source\functions_print.cpp
+	"functions.h"
+	<FL/FL_JPEG_IMAGE.H>
+
+1335893212 source:c:\users\alan\skydrive\programming\door manager\door manager prototype 5 source\resources.rc
+
+1331837286 source:c:\users\alan\skydrive\programming\door manager\door manager prototype 5 source\sqlite3.c
+	"config.h"
+	<stdint.h>
+	<inttypes.h>
+	<tcl.h>
+	<stdarg.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	<stddef.h>
+	<windows.h>
+	<os2safe.h>
+	<os2.h>
+	<uconv.h>
+	<ctype.h>
+	<time.h>
+	<sys/sysctl.h>
+	<malloc/malloc.h>
+	<libkern/OSAtomic.h>
+	<malloc.h>
+	<pthread.h>
+	<math.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<fcntl.h>
+	<unistd.h>
+	<sys/time.h>
+	<errno.h>
+	<sys/mman.h>
+	<sys/ioctl.h>
+	<semaphore.h>
+	<limits.h>
+	<sys/file.h>
+	<sys/param.h>
+	<sys/mount.h>
+	<utime.h>
+	<dlfcn.h>
+	<sys/cygwin.h>
+	"sqlite3rtree.h"
+	<unicode/utypes.h>
+	<unicode/uregex.h>
+	<unicode/ustring.h>
+	<unicode/ucol.h>
+	<unicode/ubrk.h>
+	<unicode/utf16.h>
+

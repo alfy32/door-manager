@@ -288,10 +288,10 @@ Function {make_print_dialog()} {open
 } {
   Fl_Window {} {
     label {Print Preview} open
-    xywh {1777 42 655 728} type Double color 7 align 80 visible
+    xywh {1779 32 655 800} type Double color 7 align 80 visible
   } {
     Fl_Group grp_PrintGroup {open
-      xywh {0 0 655 661}
+      xywh {0 0 655 743}
     } {
       Fl_Box opt_Customer {
         xywh {400 47 205 27} labelfont 8 align 20
@@ -339,28 +339,10 @@ Function {make_print_dialog()} {open
         xywh {150 500 205 27} labelfont 8 align 20
       }
       Fl_Box opt_Print_Price {
-        xywh {150 631 205 27} labelfont 8 align 20
+        xywh {150 696 205 27} labelfont 8 align 20
       }
       Fl_Box opt_Print_Notes {
-        xywh {370 470 230 175} box EMBOSSED_FRAME labelfont 8 align 149
-      }
-      Fl_Check_Button chk_Print_NoBrickmold {
-        xywh {365 190 100 25} down_box PLASTIC_DOWN_BOX value 1 labelfont 8 deactivate
-      }
-      Fl_Check_Button chk_Print_DeadBolt {
-        xywh {365 212 100 25} down_box PLASTIC_DOWN_BOX labelfont 8 deactivate
-      }
-      Fl_Check_Button chk_Print_DentilShelf {
-        xywh {365 247 100 25} down_box PLASTIC_DOWN_BOX labelfont 8 deactivate
-      }
-      Fl_Check_Button chk_Print_OutswingSill {
-        xywh {365 270 100 24} down_box PLASTIC_DOWN_BOX labelfont 8 deactivate
-      }
-      Fl_Check_Button chk_Print_ADASill {
-        xywh {365 291 100 25} down_box PLASTIC_DOWN_BOX labelfont 8 deactivate
-      }
-      Fl_Check_Button chk_Print_SpringHinge {
-        xywh {365 313 100 25} down_box PLASTIC_DOWN_BOX labelfont 8 deactivate
+        xywh {370 549 230 175} box EMBOSSED_FRAME labelfont 8 align 149
       }
       Fl_Box opt_CompanyInfo {
         label {House of Glass
@@ -430,43 +412,22 @@ Ephraim, UT 84627
       }
       Fl_Box {} {
         label {Price:}
-        xywh {50 631 100 27} labelfont 8 align 20
+        xywh {50 696 100 27} labelfont 8 align 20
       }
       Fl_Box {} {
         label {Notes:}
-        xywh {370 451 100 18} labelfont 8 align 20
+        xywh {370 530 100 18} labelfont 8 align 20
       }
       Fl_Box {} {
         label {Other Options}
-        xywh {365 163 100 27} labelfont 10 align 20
+        xywh {50 535 100 27} labelfont 10 align 20
       }
       Fl_Box {} {
         label {Door Design:}
         xywh {50 304 100 27} labelfont 8 align 20
       }
-      Fl_Box {} {
-        label {Spring Hinge}
-        xywh {380 312 85 27} labelfont 8 align 20
-      }
-      Fl_Box {} {
-        label {ADA Sill}
-        xywh {380 290 85 27} labelfont 8 align 20
-      }
-      Fl_Box {} {
-        label {Outswing Sill}
-        xywh {380 269 85 27} labelfont 8 align 20
-      }
-      Fl_Box {} {
-        label {Dentil Shelf}
-        xywh {380 246 85 27} labelfont 8 align 20
-      }
-      Fl_Box {} {
-        label {Dead Bolt}
-        xywh {380 211 85 27} labelfont 8 align 20
-      }
-      Fl_Box {} {
-        label {No Brickmould}
-        xywh {380 188 85 27} labelfont 8 align 20
+      Fl_Box label_other {
+        xywh {55 560 85 20} labelfont 8 align 20
       }
       Fl_Box opt_Print_NetFrame {
         xywh {150 388 205 27} labelfont 8 align 20
@@ -482,27 +443,34 @@ Ephraim, UT 84627
         label {Rough Opening:}
         xywh {50 416 100 27} labelfont 8 align 20
       }
-      Fl_Box img_Print_swing {selected
-        xywh {281 470 75 175}
+      Fl_Box img_Print_swing {
+        xywh {370 240 75 175}
+      }
+      Fl_Box {} {
+        label Swing
+        xywh {370 213 75 27} labelfont 10 align 20
+      }
+      Fl_Box opt_Print_Swing {selected
+        xywh {370 418 205 27} labelfont 8 align 20
       }
     }
     Fl_Group {} {open
-      xywh {0 672 655 57} box FLAT_BOX color 23
+      xywh {0 743 655 57} box FLAT_BOX color 23
     } {
       Fl_Button {} {
         label Print
         callback cb_Preview_PrintClicked
-        xywh {425 687 100 27} down_box DOWN_BOX align 16
+        xywh {425 758 100 27} down_box DOWN_BOX align 16
       }
       Fl_Button {} {
         label Cancel
         callback cb_Preview_CancelClicked
-        xywh {535 687 100 27} down_box DOWN_BOX
+        xywh {535 758 100 27} down_box DOWN_BOX
       }
       Fl_Button {} {
         label {Make PDF}
         callback cb_Preview_MakePDFClicked
-        xywh {315 687 100 27} down_box DOWN_BOX align 16
+        xywh {315 758 100 27} down_box DOWN_BOX align 16
       }
     }
   }

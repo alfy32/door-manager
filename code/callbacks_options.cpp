@@ -193,6 +193,8 @@ void cb_PrintClicked(Fl_Button*, void*)
     opt_Print_DoorSwing->copy_label(lst_DoorSwing->text());
     opt_Print_DoorDesign->copy_label(opt_DoorDesign->value());
 
+    opt_Print_Swing->copy_label(lst_DoorSwing->text());
+
     opt_Print_JambMaterial->copy_label(lst_JambMaterial->text());
 
     string jamb_size = "";
@@ -201,8 +203,7 @@ void cb_PrintClicked(Fl_Button*, void*)
     int size = jamb_size.find("Custom");
     if(size != -1)
     {
-        jamb_size += " Rip to: ";
-        jamb_size += txt_CustomRipSize->value();
+        jamb_size = txt_CustomRipSize->value();
     }
     opt_Print_JambSize->copy_label(jamb_size.c_str());
 
@@ -226,12 +227,50 @@ void cb_PrintClicked(Fl_Button*, void*)
     opt_Print_GlassStyle->copy_label(opt_GlassStyle->value());
     opt_Print_HingeColor->copy_label(lst_HingeColor->text());
 
-    chk_Print_NoBrickmold->value(chk_NoBrickmold->value());
-    chk_Print_DeadBolt->value(chk_DeadBolt->value());
-    chk_Print_DentilShelf->value(chk_DentilShelf->value());
-    chk_Print_OutswingSill->value(chk_OutswingSill->value());
-    chk_Print_ADASill->value(chk_ADASill->value());
-    chk_Print_SpringHinge->value(chk_SpringHinge->value());
+    int y = label_other->y(), x = label_other->x(), h = label_other->h(), w = label_other->w();
+
+    if(chk_NoBrickmold->value())
+    {
+        Fl_Box * o = new Fl_Box(x,y,w,h,"No Brickmould");
+        o->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
+        grp_PrintGroup->add(o);
+        y += h;
+    }
+    if(chk_DeadBolt->value())
+    {
+        Fl_Box * o = new Fl_Box(x,y,w,h,"Dead Bolt");
+        o->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
+        grp_PrintGroup->add(o);
+        y += h;
+    }
+    if(chk_DentilShelf->value())
+    {
+        Fl_Box * o = new Fl_Box(x,y,w,h,"Dentil Shelf");
+        o->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
+        grp_PrintGroup->add(o);
+        y += h;
+    }
+    if(chk_OutswingSill->value())
+    {
+        Fl_Box * o = new Fl_Box(x,y,w,h,"Outswing Sill");
+        o->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
+        grp_PrintGroup->add(o);
+        y += h;
+    }
+    if(chk_ADASill->value())
+    {
+        Fl_Box * o = new Fl_Box(x,y,w,h,"ADA Sill");
+        o->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
+        grp_PrintGroup->add(o);
+        y += h;
+    }
+    if(chk_SpringHinge->value())
+    {
+        Fl_Box * o = new Fl_Box(x,y,w,h,"Spring Hinge");
+        o->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
+        grp_PrintGroup->add(o);
+        y += h;
+    }
 
     if(opt_Print_DoorSwing->label())
     {

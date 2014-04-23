@@ -2,7 +2,7 @@
 //all of the necessary widgets should have pointers available to them (see fltkgui.h)
 #include "fltkgui.h"
 
-const string LIMIT_QUERY = "";  // " LIMIT 50";
+const string LIMIT_QUERY = " LIMIT 50";
 const string DB_NAME = "data";
 
 //the pointer to keep track of the options window

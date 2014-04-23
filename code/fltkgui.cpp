@@ -372,18 +372,6 @@ Fl_Box *opt_Print_Price=(Fl_Box *)0;
 
 Fl_Box *opt_Print_Notes=(Fl_Box *)0;
 
-Fl_Check_Button *chk_Print_NoBrickmold=(Fl_Check_Button *)0;
-
-Fl_Check_Button *chk_Print_DeadBolt=(Fl_Check_Button *)0;
-
-Fl_Check_Button *chk_Print_DentilShelf=(Fl_Check_Button *)0;
-
-Fl_Check_Button *chk_Print_OutswingSill=(Fl_Check_Button *)0;
-
-Fl_Check_Button *chk_Print_ADASill=(Fl_Check_Button *)0;
-
-Fl_Check_Button *chk_Print_SpringHinge=(Fl_Check_Button *)0;
-
 Fl_Box *opt_CompanyInfo=(Fl_Box *)0;
 
 #include <FL/Fl_JPEG_Image.H>
@@ -529,19 +517,23 @@ static unsigned char idata_HOG[] =
 231,169,162,181,104,164,219,110,236,15,255,217};
 static Fl_JPEG_Image image_HOG("HOG Logo.jpg", idata_HOG);
 
+Fl_Box *label_other=(Fl_Box *)0;
+
 Fl_Box *opt_Print_NetFrame=(Fl_Box *)0;
 
 Fl_Box *opt_Print_RoughOpening=(Fl_Box *)0;
 
 Fl_Box *img_Print_swing=(Fl_Box *)0;
 
+Fl_Box *opt_Print_Swing=(Fl_Box *)0;
+
 Fl_Double_Window* make_print_dialog() {
   Fl_Double_Window* w;
-  { Fl_Double_Window* o = new Fl_Double_Window(655, 728, "Print Preview");
+  { Fl_Double_Window* o = new Fl_Double_Window(655, 800, "Print Preview");
     w = o;
     o->color(FL_BACKGROUND2_COLOR);
     o->align(Fl_Align(FL_ALIGN_CLIP|FL_ALIGN_INSIDE));
-    { grp_PrintGroup = new Fl_Group(0, 0, 655, 661);
+    { grp_PrintGroup = new Fl_Group(0, 0, 655, 743);
       { opt_Customer = new Fl_Box(400, 47, 205, 27);
         opt_Customer->labelfont(8);
         opt_Customer->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
@@ -602,46 +594,15 @@ Fl_Double_Window* make_print_dialog() {
         opt_Print_HingeColor->labelfont(8);
         opt_Print_HingeColor->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
       } // Fl_Box* opt_Print_HingeColor
-      { opt_Print_Price = new Fl_Box(150, 631, 205, 27);
+      { opt_Print_Price = new Fl_Box(150, 696, 205, 27);
         opt_Print_Price->labelfont(8);
         opt_Print_Price->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
       } // Fl_Box* opt_Print_Price
-      { opt_Print_Notes = new Fl_Box(370, 470, 230, 175);
+      { opt_Print_Notes = new Fl_Box(370, 549, 230, 175);
         opt_Print_Notes->box(FL_EMBOSSED_FRAME);
         opt_Print_Notes->labelfont(8);
         opt_Print_Notes->align(Fl_Align(133|FL_ALIGN_INSIDE));
       } // Fl_Box* opt_Print_Notes
-      { chk_Print_NoBrickmold = new Fl_Check_Button(365, 190, 100, 25);
-        chk_Print_NoBrickmold->down_box(FL_PLASTIC_DOWN_BOX);
-        chk_Print_NoBrickmold->value(1);
-        chk_Print_NoBrickmold->labelfont(8);
-        chk_Print_NoBrickmold->deactivate();
-      } // Fl_Check_Button* chk_Print_NoBrickmold
-      { chk_Print_DeadBolt = new Fl_Check_Button(365, 212, 100, 25);
-        chk_Print_DeadBolt->down_box(FL_PLASTIC_DOWN_BOX);
-        chk_Print_DeadBolt->labelfont(8);
-        chk_Print_DeadBolt->deactivate();
-      } // Fl_Check_Button* chk_Print_DeadBolt
-      { chk_Print_DentilShelf = new Fl_Check_Button(365, 247, 100, 25);
-        chk_Print_DentilShelf->down_box(FL_PLASTIC_DOWN_BOX);
-        chk_Print_DentilShelf->labelfont(8);
-        chk_Print_DentilShelf->deactivate();
-      } // Fl_Check_Button* chk_Print_DentilShelf
-      { chk_Print_OutswingSill = new Fl_Check_Button(365, 270, 100, 24);
-        chk_Print_OutswingSill->down_box(FL_PLASTIC_DOWN_BOX);
-        chk_Print_OutswingSill->labelfont(8);
-        chk_Print_OutswingSill->deactivate();
-      } // Fl_Check_Button* chk_Print_OutswingSill
-      { chk_Print_ADASill = new Fl_Check_Button(365, 291, 100, 25);
-        chk_Print_ADASill->down_box(FL_PLASTIC_DOWN_BOX);
-        chk_Print_ADASill->labelfont(8);
-        chk_Print_ADASill->deactivate();
-      } // Fl_Check_Button* chk_Print_ADASill
-      { chk_Print_SpringHinge = new Fl_Check_Button(365, 313, 100, 25);
-        chk_Print_SpringHinge->down_box(FL_PLASTIC_DOWN_BOX);
-        chk_Print_SpringHinge->labelfont(8);
-        chk_Print_SpringHinge->deactivate();
-      } // Fl_Check_Button* chk_Print_SpringHinge
       { opt_CompanyInfo = new Fl_Box(55, 46, 135, 80, "House of Glass\n167 E. 800 S.\nEphraim, UT 84627\n(435) 283-4982\n(435) 283-4\
 402 Fax");
         opt_CompanyInfo->labelfont(8);
@@ -708,15 +669,15 @@ Fl_Double_Window* make_print_dialog() {
         o->labelfont(8);
         o->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
       } // Fl_Box* o
-      { Fl_Box* o = new Fl_Box(50, 631, 100, 27, "Price:");
+      { Fl_Box* o = new Fl_Box(50, 696, 100, 27, "Price:");
         o->labelfont(8);
         o->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
       } // Fl_Box* o
-      { Fl_Box* o = new Fl_Box(370, 451, 100, 18, "Notes:");
+      { Fl_Box* o = new Fl_Box(370, 530, 100, 18, "Notes:");
         o->labelfont(8);
         o->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
       } // Fl_Box* o
-      { Fl_Box* o = new Fl_Box(365, 163, 100, 27, "Other Options");
+      { Fl_Box* o = new Fl_Box(50, 535, 100, 27, "Other Options");
         o->labelfont(10);
         o->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
       } // Fl_Box* o
@@ -724,30 +685,10 @@ Fl_Double_Window* make_print_dialog() {
         o->labelfont(8);
         o->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
       } // Fl_Box* o
-      { Fl_Box* o = new Fl_Box(380, 312, 85, 27, "Spring Hinge");
-        o->labelfont(8);
-        o->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
-      } // Fl_Box* o
-      { Fl_Box* o = new Fl_Box(380, 290, 85, 27, "ADA Sill");
-        o->labelfont(8);
-        o->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
-      } // Fl_Box* o
-      { Fl_Box* o = new Fl_Box(380, 269, 85, 27, "Outswing Sill");
-        o->labelfont(8);
-        o->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
-      } // Fl_Box* o
-      { Fl_Box* o = new Fl_Box(380, 246, 85, 27, "Dentil Shelf");
-        o->labelfont(8);
-        o->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
-      } // Fl_Box* o
-      { Fl_Box* o = new Fl_Box(380, 211, 85, 27, "Dead Bolt");
-        o->labelfont(8);
-        o->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
-      } // Fl_Box* o
-      { Fl_Box* o = new Fl_Box(380, 188, 85, 27, "No Brickmould");
-        o->labelfont(8);
-        o->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
-      } // Fl_Box* o
+      { label_other = new Fl_Box(55, 560, 85, 20);
+        label_other->labelfont(8);
+        label_other->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
+      } // Fl_Box* label_other
       { opt_Print_NetFrame = new Fl_Box(150, 388, 205, 27);
         opt_Print_NetFrame->labelfont(8);
         opt_Print_NetFrame->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
@@ -764,23 +705,31 @@ Fl_Double_Window* make_print_dialog() {
         o->labelfont(8);
         o->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
       } // Fl_Box* o
-      { img_Print_swing = new Fl_Box(281, 470, 75, 175);
+      { img_Print_swing = new Fl_Box(370, 240, 75, 175);
       } // Fl_Box* img_Print_swing
+      { Fl_Box* o = new Fl_Box(370, 213, 75, 27, "Swing");
+        o->labelfont(10);
+        o->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
+      } // Fl_Box* o
+      { opt_Print_Swing = new Fl_Box(370, 418, 205, 27);
+        opt_Print_Swing->labelfont(8);
+        opt_Print_Swing->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
+      } // Fl_Box* opt_Print_Swing
       grp_PrintGroup->end();
     } // Fl_Group* grp_PrintGroup
-    { Fl_Group* o = new Fl_Group(0, 672, 655, 57);
+    { Fl_Group* o = new Fl_Group(0, 743, 655, 57);
       o->box(FL_FLAT_BOX);
       o->color((Fl_Color)23);
-      { Fl_Button* o = new Fl_Button(425, 687, 100, 27, "Print");
+      { Fl_Button* o = new Fl_Button(425, 758, 100, 27, "Print");
         o->down_box(FL_DOWN_BOX);
         o->callback((Fl_Callback*)cb_Preview_PrintClicked);
         o->align(Fl_Align(FL_ALIGN_CENTER|FL_ALIGN_INSIDE));
       } // Fl_Button* o
-      { Fl_Button* o = new Fl_Button(535, 687, 100, 27, "Cancel");
+      { Fl_Button* o = new Fl_Button(535, 758, 100, 27, "Cancel");
         o->down_box(FL_DOWN_BOX);
         o->callback((Fl_Callback*)cb_Preview_CancelClicked);
       } // Fl_Button* o
-      { Fl_Button* o = new Fl_Button(315, 687, 100, 27, "Make PDF");
+      { Fl_Button* o = new Fl_Button(315, 758, 100, 27, "Make PDF");
         o->down_box(FL_DOWN_BOX);
         o->callback((Fl_Callback*)cb_Preview_MakePDFClicked);
         o->align(Fl_Align(FL_ALIGN_CENTER|FL_ALIGN_INSIDE));
