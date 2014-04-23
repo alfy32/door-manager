@@ -42,15 +42,15 @@ protected:
 
     //database callback to fill the sizes vector with all sizes from the database
     static int load_sizes_sql_stat(void *NotUsed, int col, char **values, char **colName)
-    { me->load_sizes_sql(NotUsed, col, values, colName); }
+    { return me->load_sizes_sql(NotUsed, col, values, colName); }
     int load_sizes_sql(void *NotUsed, int col, char **values, char **colName);
     //database callback to set the prices of the single and double doors.
     static int load_prices_sql_stat(void *NotUsed, int col, char **values, char **colName)
-    { me->load_prices_sql(NotUsed, col, values, colName); }
+    { return me->load_prices_sql(NotUsed, col, values, colName); }
     int load_prices_sql(void *NotUsed, int col, char **values, char **colName);
     //database callback to set whether the certain size is available for the door.
     static int load_available_sql_stat(void *NotUsed, int col, char **values, char **colName)
-    { me->load_available_sql(NotUsed, col, values, colName); }
+    { return me->load_available_sql(NotUsed, col, values, colName); }
     int load_available_sql(void *NotUsed, int col, char **values, char **colName);
 
     float string_to_float(const char number[]);

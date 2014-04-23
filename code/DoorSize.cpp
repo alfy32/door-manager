@@ -171,7 +171,7 @@ bool DoorSize::isNumber(char ch)
 
 int DoorSize::findNextNumberIndex(string str, int &start)
 {
-	while(start < str.length() && !isNumber(str[start]))
+	while(start < int(str.length()) && !isNumber(str[start]))
 			start++;
 
 	return start;
@@ -181,7 +181,7 @@ int DoorSize::getNextNumber(string str, int &start)
 {
 	string number;
 
-	while(start < str.length() && isNumber(str[start]))
+	while(start < int(str.length()) && isNumber(str[start]))
 			number += str[start++];
 
 	return atoi(number.c_str());

@@ -29,6 +29,8 @@ int Door_Size_Chooser::set_door_style(sqlite3 *database, string style_)
     get_available();
 
     fill_menu();
+
+	return 0;
 }
 
 double Door_Size_Chooser::get_price()
@@ -57,7 +59,7 @@ void Door_Size_Chooser::get_sizes()
 	if( rc!=SQLITE_OK )
 	{
 	    //outputs the error message for testing
-		cout << endl << zErrMsg << endl;
+		////cout << endl << zErrMsg << endl;
 
 		sqlite3_free(zErrMsg);
 	}
@@ -81,7 +83,7 @@ void Door_Size_Chooser::get_prices()
 	if( rc!=SQLITE_OK )
 	{
 	    //outputs the error message for testing
-		cout << endl << zErrMsg << endl;
+		////cout << endl << zErrMsg << endl;
 
 		sqlite3_free(zErrMsg);
 	}
@@ -105,7 +107,7 @@ void Door_Size_Chooser::get_available()
 	if( rc!=SQLITE_OK )
 	{
 	    //outputs the error message for testing
-		cout << endl << zErrMsg << endl;
+		////cout << endl << zErrMsg << endl;
 
 		sqlite3_free(zErrMsg);
 	}
@@ -113,7 +115,7 @@ void Door_Size_Chooser::get_available()
 
 void Door_Size_Chooser::fill_menu()
 {
-    for(int i = 0; i < sizes.size(); i++)
+    for(unsigned i = 0; i < int(sizes.size()); i++)
     {
         if(available.at(i))
             add(sizes[i].toString().c_str(),0,cb_Door_Size_Chooser,(void*)i);
@@ -127,7 +129,7 @@ int Door_Size_Chooser::index_converter(int index)
     int count = 0;
     int i;
 
-    for(i = 0; i < available.size() && count < index; i++)
+    for(i = 0; i < int(available.size()) && count < index; i++)
     {
         if(available[i])
             count++;
@@ -149,6 +151,8 @@ int Door_Size_Chooser::load_sizes_sql(void *NotUsed, int col, char **values, cha
         //add each size to the vector
         sizes.push_back(DoorSize(values[i]));
     }
+
+	return 0;
 }
 
 //SQL callback to get the single and double door prices
@@ -166,20 +170,21 @@ int Door_Size_Chooser::load_prices_sql(void *NotUsed, int col, char **values, ch
     //output for testing
     //for(int i = 0; i < col; i++)
     //{
-    //    cout << colName[i] << ": " << values[i] << endl;
+    //    //cout << colName[i] << ": " << values[i] << endl;
     //}
+
+	return 0;
 }
 
 //SQL callback for which doors are available
 int Door_Size_Chooser::load_available_sql(void *NotUsed, int col, char **values, char **colName)
 {
     available.clear();
-    bool avail;
-
+    
     for(int i = 1; i < col; i++)
     {
         //output for testing
-        //cout << colName[i] << ": " << values[i] << endl;
+        ////cout << colName[i] << ": " << values[i] << endl;
 
         //add each size to the vector
         if(values[i])
@@ -190,6 +195,8 @@ int Door_Size_Chooser::load_available_sql(void *NotUsed, int col, char **values,
                 available.push_back(false);
         }
     }
+
+	return 0;
 }
 
 //converts a string to a float

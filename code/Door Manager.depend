@@ -1267,3 +1267,359 @@
 	<unicode/ubrk.h>
 	<unicode/utf16.h>
 
+1398273204 source:c:\git\door-manager\code\alfy_sql.cpp
+	"Alfy_SQL.h"
+
+1398273205 c:\git\door-manager\code\alfy_sql.h
+	<iostream>
+	<string>
+	"sqlite3.h"
+
+1398273216 c:\git\door-manager\code\sqlite3.h
+	<stdarg.h>
+
+1398273205 source:c:\git\door-manager\code\callbacks_main.cpp
+	"fltkgui.h"
+
+1398273209 c:\git\door-manager\code\fltkgui.h
+	<FL/Fl.H>
+	"Alfy_SQL.h"
+	"functions.h"
+	"door.h"
+	<FL/Fl_Double_Window.H>
+	<FL/Fl_Choice.H>
+	<FL/Fl_Group.H>
+	<FL/Fl_Input.H>
+	<FL/Fl_Browser.H>
+	<FL/Fl_Scroll.H>
+	<FL/Fl_Double_Window.H>
+	<FL/Fl_Box.H>
+	<FL/Fl_Output.H>
+	<FL/Fl_Value_Output.H>
+	"Door_Size_Chooser.h"
+	<FL/Fl_Choice.H>
+	<FL/Fl_Check_Button.H>
+	<FL/Fl_Value_Input.H>
+	<FL/Fl_Button.H>
+
+1350568591 c:\git\door-manager\libraries\fl\fl.h
+	<FL/Fl_Cairo.H>
+	"fl_utf8.h"
+	"Enumerations.H"
+
+1311054570 c:\git\door-manager\libraries\fl\fl_cairo.h
+	<FL/Fl_Export.H>
+	<cairo-xlib.h>
+	<cairo-win32.h>
+	<cairo-quartz.h>
+
+1311054570 c:\git\door-manager\libraries\fl\fl_export.h
+
+1311054570 c:\git\door-manager\libraries\fl\fl_utf8.h
+	"Fl_Export.H"
+	"fl_types.h"
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<locale.h>
+	<ctype.h>
+	<wchar.h>
+	<sys/stat.h>
+	<sys/types.h>
+	<sys/stat.h>
+	"Xutf8.h"
+	<X11/Xlocale.h>
+	<X11/Xlib.h>
+	<locale.h>
+
+1311054570 c:\git\door-manager\libraries\fl\fl_types.h
+
+1311054570 c:\git\door-manager\libraries\fl\xutf8.h
+	<X11/X.h>
+	<X11/Xlib.h>
+	<X11/Xlocale.h>
+	<X11/Xutil.h>
+
+1355082357 c:\git\door-manager\libraries\fl\enumerations.h
+	"Fl_Export.H"
+	"fl_types.h"
+
+1398273210 c:\git\door-manager\code\functions.h
+	"fltkgui.h"
+	"Alfy_SQL.h"
+	"sqlite3.h"
+	"door.h"
+	"DoorButton.h"
+	<string>
+	<FL/Fl_Double_Window.H>
+	<FL/FL_JPEG_IMAGE.H>
+	<FL/Fl_Printer.H>
+	<FL/Fl_PostScript.H>
+	<stdio.h>
+	<stdlib.h>
+
+1398273206 c:\git\door-manager\code\door.h
+	<fstream>
+	<string>
+
+1398273207 c:\git\door-manager\code\doorbutton.h
+	<fstream>
+	<string>
+	"door.h"
+	<FL/Fl_Button.H>
+	<FL/Fl_Jpeg_Image.H>
+
+1311054570 c:\git\door-manager\libraries\fl\fl_button.h
+	"Fl_Widget.H"
+
+1335215526 c:\git\door-manager\libraries\fl\fl_widget.h
+	"Enumerations.H"
+	<stdint.h>
+	<stddef.h>
+
+1311054570 c:\git\door-manager\libraries\fl\fl_jpeg_image.h
+	"Fl_Image.H"
+
+1352480528 c:\git\door-manager\libraries\fl\fl_image.h
+	"Enumerations.H"
+	<stdlib.h>
+
+1343108242 c:\git\door-manager\libraries\fl\fl_double_window.h
+	"Fl_Window.H"
+
+1352238374 c:\git\door-manager\libraries\fl\fl_window.h
+	"Fl_Group.H"
+
+1311054570 c:\git\door-manager\libraries\fl\fl_group.h
+	"Fl_Widget.H"
+
+1316017052 c:\git\door-manager\libraries\fl\fl_printer.h
+	<FL/x.H>
+	<FL/Fl_Paged_Device.H>
+	<FL/fl_draw.H>
+	<FL/Fl_Pixmap.H>
+	<FL/Fl_RGB_Image.H>
+	<FL/Fl_Bitmap.H>
+	<stdio.h>
+	<FL/Fl_PostScript.H>
+	<commdlg.h>
+
+1332524873 c:\git\door-manager\libraries\fl\x.h
+	"Enumerations.H"
+	"win32.H"
+	"mac.H"
+	<X11/Xlib.h>
+	<X11/Xutil.h>
+	<X11/Xatom.h>
+	"Fl_Window.H"
+	"Xutf8.h"
+
+1331556950 c:\git\door-manager\libraries\fl\win32.h
+	<windows.h>
+	<FL/Fl_Window.H>
+
+1352821542 c:\git\door-manager\libraries\fl\mac.h
+	<FL/Fl_Widget.H>
+	<ApplicationServices/ApplicationServices.h>
+	"Fl_Window.H"
+
+1352238374 c:\git\door-manager\libraries\fl\fl_paged_device.h
+	<FL/Fl_Device.H>
+	<FL/Fl_Window.H>
+
+1352238374 c:\git\door-manager\libraries\fl\fl_device.h
+	<FL/x.H>
+	<FL/Fl_Plugin.H>
+	<FL/Fl_Image.H>
+	<FL/Fl_Bitmap.H>
+	<FL/Fl_Pixmap.H>
+	<FL/Fl_RGB_Image.H>
+	<stdlib.h>
+
+1311054570 c:\git\door-manager\libraries\fl\fl_plugin.h
+	"Fl_Preferences.H"
+
+1326890397 c:\git\door-manager\libraries\fl\fl_preferences.h
+	<stdio.h>
+	"Fl_Export.H"
+
+1311054570 c:\git\door-manager\libraries\fl\fl_bitmap.h
+	"Fl_Image.H"
+
+1352238374 c:\git\door-manager\libraries\fl\fl_pixmap.h
+	"Fl_Image.H"
+	"x.H"
+
+1311054570 c:\git\door-manager\libraries\fl\fl_rgb_image.h
+	"Fl_Image.H"
+
+1336497334 c:\git\door-manager\libraries\fl\fl_draw.h
+	<FL/x.H>
+	<FL/Enumerations.H>
+	<FL/Fl_Window.H>
+	<FL/Fl_Device.H>
+
+1348143818 c:\git\door-manager\libraries\fl\fl_postscript.h
+	<FL/Fl_Paged_Device.H>
+	<FL/fl_draw.H>
+
+1311054570 c:\git\door-manager\libraries\fl\fl_choice.h
+	"Fl_Menu_.H"
+
+1323367811 c:\git\door-manager\libraries\fl\fl_menu_.h
+	"Fl_Widget.H"
+	"Fl_Menu_Item.H"
+
+1311054570 c:\git\door-manager\libraries\fl\fl_menu_item.h
+	"Fl_Widget.H"
+	"Fl_Image.H"
+
+1311054570 c:\git\door-manager\libraries\fl\fl_input.h
+	"Fl_Input_.H"
+
+1323194151 c:\git\door-manager\libraries\fl\fl_input_.h
+	"Fl_Widget.H"
+
+1347925494 c:\git\door-manager\libraries\fl\fl_browser.h
+	"Fl_Browser_.H"
+	"Fl_Image.H"
+
+1317737455 c:\git\door-manager\libraries\fl\fl_browser_.h
+	"Fl_Group.H"
+	"Fl_Scrollbar.H"
+	<FL/Fl.H>
+
+1317540313 c:\git\door-manager\libraries\fl\fl_scrollbar.h
+	"Fl_Slider.H"
+
+1338223152 c:\git\door-manager\libraries\fl\fl_slider.h
+	"Fl_Valuator.H"
+
+1311054570 c:\git\door-manager\libraries\fl\fl_valuator.h
+	"Fl_Widget.H"
+
+1317737455 c:\git\door-manager\libraries\fl\fl_scroll.h
+	"Fl_Group.H"
+	"Fl_Scrollbar.H"
+
+1345198686 c:\git\door-manager\libraries\fl\fl_box.h
+	"Fl_Widget.H"
+
+1343108242 c:\git\door-manager\libraries\fl\fl_output.h
+	"Fl_Input.H"
+
+1311054570 c:\git\door-manager\libraries\fl\fl_value_output.h
+	"Fl_Valuator.H"
+
+1398273207 c:\git\door-manager\code\door_size_chooser.h
+	<vector>
+	<string>
+	<stdlib.h>
+	<FL/Fl_Choice.H>
+	"DoorSize.h"
+	"sqlite3.h"
+
+1398273207 c:\git\door-manager\code\doorsize.h
+	<string>
+	<stdlib.h>
+	<iostream>
+
+1311054570 c:\git\door-manager\libraries\fl\fl_check_button.h
+	"Fl_Light_Button.H"
+
+1311054570 c:\git\door-manager\libraries\fl\fl_light_button.h
+	"Fl_Button.H"
+
+1311054570 c:\git\door-manager\libraries\fl\fl_value_input.h
+	"Fl_Valuator.H"
+	"Fl_Input.H"
+
+1398273205 source:c:\git\door-manager\code\callbacks_options.cpp
+	"fltkgui.h"
+
+1398273205 source:c:\git\door-manager\code\callbacks_print.cpp
+	"fltkgui.h"
+	<FL/Fl_Printer.H>
+
+1398273206 source:c:\git\door-manager\code\door.cpp
+	"door.h"
+
+1398273207 source:c:\git\door-manager\code\door_size_chooser.cpp
+	"Door_Size_Chooser.h"
+
+1398273206 source:c:\git\door-manager\code\doorbutton.cpp
+	"DoorButton.h"
+	"Alfy_SQL.h"
+
+1398273207 source:c:\git\door-manager\code\doorsize.cpp
+	"DoorSize.h"
+
+1398273208 source:c:\git\door-manager\code\fltkgui.cpp
+	"fltkgui.h"
+	<FL/Fl_JPEG_Image.H>
+
+1398273209 source:c:\git\door-manager\code\functions.cpp
+	"functions.h"
+
+1398273210 source:c:\git\door-manager\code\functions_main.cpp
+	"functions.h"
+	<FL/FL_JPEG_IMAGE.H>
+
+1398273210 source:c:\git\door-manager\code\functions_options.cpp
+	"functions.h"
+	<FL/FL_JPEG_IMAGE.H>
+
+1398273210 source:c:\git\door-manager\code\functions_print.cpp
+	"functions.h"
+	<FL/FL_JPEG_IMAGE.H>
+
+1398273557 source:c:\git\door-manager\code\resources.rc
+
+1398273216 source:c:\git\door-manager\code\sqlite3.c
+	"config.h"
+	<stdint.h>
+	<inttypes.h>
+	<tcl.h>
+	<stdarg.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	<stddef.h>
+	<windows.h>
+	<ctype.h>
+	<time.h>
+	<sys/sysctl.h>
+	<malloc/malloc.h>
+	<libkern/OSAtomic.h>
+	<malloc.h>
+	<pthread.h>
+	<math.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<fcntl.h>
+	<unistd.h>
+	<sys/time.h>
+	<errno.h>
+	<sys/mman.h>
+	<sys/ioctl.h>
+	<semaphore.h>
+	<limits.h>
+	<sys/file.h>
+	<sys/param.h>
+	<sys/mount.h>
+	<utime.h>
+	<sys/dcmd_blk.h>
+	<sys/statvfs.h>
+	<dlfcn.h>
+	<sys/cygwin.h>
+	"sqlite3rtree.h"
+	<unicode/utypes.h>
+	<unicode/uregex.h>
+	<unicode/ustring.h>
+	<unicode/ucol.h>
+	<unicode/ubrk.h>
+	<unicode/utf16.h>
+

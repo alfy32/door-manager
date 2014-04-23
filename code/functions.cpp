@@ -103,7 +103,7 @@ string double_to_string(double number)
         }
     }
 
-    char num[digits+2];
+    char* num = new char[digits+2];
 
     num[digits+1] = 0;                                  //sets the null character toterminte the string
     num[digits]   = ((int)((number+.001)*100)%10) + 48; //sets the hundredths
@@ -122,7 +122,11 @@ string double_to_string(double number)
         num[digits-3-x] = ((int)(number/temp)%10) + 48;
     }
 
-    return negative + num;
+	std::string value = negative + num;
+
+	delete [] num;
+
+    return value;
 }
 
 string strip_quotes(string source)

@@ -90,7 +90,7 @@ int db_callback_one_door(void *NotUsed, int col, char **values, char **colName)
         DoorButton *b = add_door(door);
 
         //for testing
-        //cout << "Just one door" << endl;
+        ////cout << "Just one door" << endl;
 
         //click the button because it is the only one
         cb_door_click(b,0);

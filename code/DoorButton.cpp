@@ -37,14 +37,14 @@ void DoorButton::add_door(Door door_)
         string pSQL = "SELECT pic FROM thumbs WHERE style='950HD'";
         int col = 0;
 
-        //cout << "got it";
+        ////cout << "got it";
         sqlite3_stmt *stmt;	// stores the results of the query
 
         // runs the statement and puts the results in stmt
         if( sqlite3_prepare_v2(db.getDatabase(), pSQL.c_str(), pSQL.length(), &stmt, NULL) )
         {
             // output error message
-            cout << "Prepare Error: " << sqlite3_errmsg(db.getDatabase()) << endl;
+            //cout << "Prepare Error: " << sqlite3_errmsg(db.getDatabase()) << endl;
 
             //quit and return 0
 

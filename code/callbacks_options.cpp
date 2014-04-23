@@ -10,7 +10,7 @@ void cb_Door_Size_Chooser(Fl_Widget *w, void*v)
     bool single;
     if(lst_DoorSize->text())
     {
-        single = lst_DoorSize->text()[0] < '5';
+        single = lst_DoorSize->text()[0] < '4';
 
         lst_DoorSwing->clear();
         lst_DoorSwing->redraw();
@@ -151,6 +151,13 @@ void cb_update(Fl_Widget*, void*)
                    "WHERE list = 'OTHER_OPTIONS' "
                    "AND label = 'Spring Hinge'");
     }
+	if(chk_CutDown->value())
+    {
+        total += wnd_main->db.getDouble( sql +
+                   "SELECT " + single_double + " FROM PriceList " +
+                   "WHERE list = 'OTHER_OPTIONS' "
+                   "AND label = 'Cut Down'");
+    }
 
     opt_Cost->value(total);
 
@@ -283,6 +290,13 @@ void cb_PrintClicked(Fl_Button*, void*)
         grp_PrintGroup->add(o);
         y += h;
     }
+	if(chk_CutDown->value())
+    {
+        Fl_Box * o = new Fl_Box(x,y,w,h,"Cut Down");
+        o->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
+        grp_PrintGroup->add(o);
+        y += h;
+    }
 
     if(opt_Print_DoorSwing->label())
     {
@@ -312,7 +326,7 @@ int db_callback_lst_sill(void *NotUsed, int col, char **values, char **colName)
     {
         lst_Sill->add(values[0],0,cb_update,0);
         //for testing
-        //cout << "SILL: " << values[0] << endl;
+        ////cout << "SILL: " << values[0] << endl;
     }
     return 0;
 }
@@ -323,7 +337,7 @@ int db_callback_lst_hinge_color(void *NotUsed, int col, char **values, char **co
     {
         lst_HingeColor->add(values[0],0,cb_update,0);
         //for testing
-        //cout << "HINGE COLOR: " << values[0] << endl;
+        ////cout << "HINGE COLOR: " << values[0] << endl;
     }
     return 0;
 }
@@ -334,7 +348,7 @@ int db_callback_lst_jamb_material(void *NotUsed, int col, char **values, char **
     {
         lst_JambMaterial->add(values[0],0,cb_jamb,0);
         //for testing
-        //cout << "JAMB MATERIAL: " << values[0] << endl;
+        ////cout << "JAMB MATERIAL: " << values[0] << endl;
     }
     return 0;
 }
@@ -345,7 +359,7 @@ int db_callback_lst_jamb_size(void *NotUsed, int col, char **values, char **colN
     {
         lst_JambSize->add(fix_jamb_size(values[0]).c_str(),0,cb_jamb_size,0);
         //for testing
-        //cout << "JAMB SIZE: " << values[0] << endl;
+        ////cout << "JAMB SIZE: " << values[0] << endl;
     }
     return 0;
 }
@@ -369,7 +383,7 @@ int db_callback_lst_door_swing(void *NotUsed, int col, char **values, char **col
             lst_DoorSwing->add(values[0]);
 
         //for testing
-        //cout << "DOOR SWING: " << values[0] << endl;
+        ////cout << "DOOR SWING: " << values[0] << endl;
     }
     return 0;
 }

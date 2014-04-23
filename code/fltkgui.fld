@@ -1,8 +1,8 @@
 # data file for the Fltk User Interface Designer (fluid)
-version 1.0300 
+version 1.0302 
 header_name {.h} 
 code_name {.cpp}
-decl {\#include <SI/Si_Button.H>} {public global
+decl {//\#include <SI/Si_Button.H>} {public global
 } 
 
 decl {\#include "Alfy_SQL.h"} {public global
@@ -12,9 +12,6 @@ decl {\#include "functions.h"} {public global
 } 
 
 decl {\#include "door.h"} {public global
-} 
-
-decl {\#include <iostream>} {public global
 } 
 
 decl {\#include <FL/Fl_Double_Window.H>} {public global
@@ -53,15 +50,17 @@ if(W != width || H != height)
   }
 } 
 
-Function {} {} {
+Function {} {open
+} {
+  code {//This will hide the command prompt if need: ShowWindow( GetConsoleWindow(), SW_HIDE );} {}
   code {Fl::scheme("gtk+");
 Fl::option(Fl::OPTION_ARROW_FOCUS, true);} {}
   Fl_Window wnd_main {
-    label {Door Manager} open
-    xywh {200 115 780 547} type Double color 55 align 80 hide resizable
+    label {Door Manager} open selected
+    xywh {474 211 780 547} type Double color 55 align 80 resizable
     code0 {wnd_main->db.setName("Data\\\\doors.db");}
     code1 {wnd_main->db.open();}
-    class Resize_Window size_range {522 277 0 0}
+    class Resize_Window size_range {600 300 0 0} visible
   } {
     Fl_Group grp_Sidebar {open
       xywh {0 0 260 547} box FLAT_BOX color 23 selection_color 55
@@ -102,10 +101,11 @@ Fl::option(Fl::OPTION_ARROW_FOCUS, true);} {}
   code {cb_resize(wnd_main);} {}
 } 
 
-Function {make_door_info_dialog()} {} {
+Function {make_door_info_dialog()} {open
+} {
   Fl_Window {} {
     label {Door Information} open
-    xywh {533 244 808 624} type Double color 55 align 80 hide
+    xywh {377 309 808 624} type Double color 55 align 80 hide
   } {
     Fl_Box boxDoorImage {
       xywh {25 28 130 251} box THIN_UP_FRAME
@@ -197,11 +197,11 @@ Function {make_door_info_dialog()} {} {
     }
     Fl_Input txt_Notes {
       label {Notes:}
-      xywh {170 377 230 172} type Multiline align 5
+      xywh {170 377 230 180} type Multiline align 5
     }
     Fl_Group {} {
       label {Other Options} open
-      xywh {421 377 120 172} box RFLAT_BOX color 23 align 5
+      xywh {421 377 120 180} box RFLAT_BOX color 23 align 5
     } {
       Fl_Check_Button chk_NoBrickmold {
         label {No Brickmould}
@@ -211,32 +211,37 @@ Function {make_door_info_dialog()} {} {
       Fl_Check_Button chk_DeadBolt {
         label {Dead Bolt}
         callback cb_update
-        xywh {428 411 106 25} down_box DOWN_BOX
+        xywh {428 409 106 25} down_box DOWN_BOX
       }
       Fl_Check_Button chk_DentilShelf {
         label {Dentil Shelf}
         callback cb_update
-        xywh {428 437 106 25} down_box DOWN_BOX
+        xywh {428 433 106 25} down_box DOWN_BOX
       }
       Fl_Check_Button chk_OutswingSill {
         label {Outswing Sill}
         callback cb_update
-        xywh {428 463 106 24} down_box DOWN_BOX
+        xywh {428 457 106 24} down_box DOWN_BOX
       }
       Fl_Check_Button chk_ADASill {
         label {ADA Sill}
         callback cb_update
-        xywh {428 489 106 25} down_box DOWN_BOX
+        xywh {428 481 106 25} down_box DOWN_BOX
       }
       Fl_Check_Button chk_SpringHinge {
         label {Spring Hinge}
         callback cb_update
-        xywh {428 515 106 25} down_box DOWN_BOX
+        xywh {428 504 106 25} down_box DOWN_BOX
+      }
+      Fl_Check_Button chk_CutDown {
+        label {Cut Down}
+        callback cb_update
+        xywh {428 525 106 25} down_box DOWN_BOX
       }
     }
     Fl_Group {} {
       label Price open
-      xywh {561 377 231 172} box RFLAT_BOX color 23 align 5
+      xywh {561 377 231 180} box RFLAT_BOX color 23 align 5
     } {
       Fl_Value_Output opt_Cost {
         xywh {693 386 73 26} color 55 deactivate
@@ -286,7 +291,7 @@ Function {make_print_dialog()} {open
 } {
   Fl_Window {} {
     label {Print Preview} open
-    xywh {807 107 655 800} type Double color 7 align 80 visible
+    xywh {959 124 655 799} type Double color 7 align 80 hide
   } {
     Fl_Group grp_PrintGroup {open
       xywh {0 0 655 743}
@@ -424,7 +429,7 @@ Ephraim, UT 84627
         label {Door Design:}
         xywh {50 304 100 27} labelfont 8 align 20
       }
-      Fl_Box label_other {selected
+      Fl_Box label_other {
         xywh {55 600 85 20} labelfont 8 align 20
       }
       Fl_Box opt_Print_NetFrame {

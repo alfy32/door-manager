@@ -38,8 +38,7 @@ void set_jamb_size()
         //cout << "JAMB MATERIAL: " << lst_JambMaterial->text() << endl;
         //cout << sql << endl;
 
-        wnd_main->db.runSQL(sql,
-                        db_callback_lst_jamb_size);
+        wnd_main->db.runSQL(sql, db_callback_lst_jamb_size);
     }
 }
 
@@ -47,7 +46,7 @@ string fix_jamb_size(string source)
 {
     string fixed = "";
 
-    for(int i = 0; i < source.length(); i++)
+    for(unsigned i = 0; i < source.length(); i++)
     {
         if(source[i] == '/')
             fixed += "\\/";

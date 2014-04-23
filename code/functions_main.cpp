@@ -41,9 +41,9 @@ DoorButton *add_door(Door door)
 
     //find how wide the window is to find the number of columns and
     //the width of the doors
-    int gridWidth = grp_DoorGrid->w() - 20;
-    int cols = gridWidth/250;
-    int width = gridWidth/cols;
+	int gridWidth = grp_DoorGrid->w() - 20;
+	int cols = gridWidth/250;
+	int width = gridWidth/cols;
 
     //set the beginning position of the door buttons
     if(posX == 0)
