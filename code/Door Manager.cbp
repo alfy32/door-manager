@@ -48,6 +48,8 @@
 			<Add library="alfy" />
 			<Add library="si" />
 		</Linker>
+		<Unit filename="Alfy_SQL.cpp" />
+		<Unit filename="Alfy_SQL.h" />
 		<Unit filename="DoorButton.cpp" />
 		<Unit filename="DoorButton.h" />
 		<Unit filename="DoorSize.cpp" />
@@ -59,7 +61,6 @@
 		<Unit filename="callbacks_print.cpp" />
 		<Unit filename="door.cpp" />
 		<Unit filename="door.h" />
-		<Unit filename="door_loader - Copy.cpp" />
 		<Unit filename="fltkgui.cpp" />
 		<Unit filename="fltkgui.fld" />
 		<Unit filename="fltkgui.h" />

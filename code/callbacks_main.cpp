@@ -3,6 +3,7 @@
 #include "fltkgui.h"
 
 const string LIMIT_QUERY = "";  // " LIMIT 50";
+const string DB_NAME = "data";
 
 //the pointer to keep track of the options window
 Fl_Double_Window *wnd_new;
@@ -18,22 +19,17 @@ void cb_MostUsedItemSelected(Fl_Browser*, void*)
 //so you can updade the door grid
 void cb_SearchTextChanged(Fl_Input* input, void*)
 {
-    //point to the database
-    sqlite3 * db = wnd_main->db;
-
     restart_doors();
 
-    //add the beginnig of the SELECT statement to count the doors
-    string search2 = "SELECT COUNT(*) AS count FROM doors " + get_select_door_WHERE();
-
-    //execute the count sql statement
-    runSQL(db, search2.c_str());
-
-    //add the beginnig of the SELECT statement
-    string search1 = "SELECT * FROM doors " + get_select_door_WHERE() + LIMIT_QUERY;
-
-    //execute the SQL statement
-    runSQL(db, search1.c_str());
+    //get a count of the doors to see if there is only one.
+    if(wnd_main->db.getInt("SELECT COUNT() AS count FROM doors " + get_select_door_WHERE()) == 1)
+    {
+        wnd_main->db.runSQL("SELECT * FROM doors " + get_select_door_WHERE(), db_callback_one_door);
+    }
+    else    //do a normal select and show all searched for doors
+    {
+        wnd_main->db.runSQL("SELECT * FROM doors " + get_select_door_WHERE() + LIMIT_QUERY, db_callback_door);
+    }
 }
 
 //for when the window resized to change the width
@@ -42,10 +38,9 @@ void cb_resize(Fl_Double_Window* w)
     restart_doors();
 
     //remake the SQL statement and run it
-    string search = "SELECT * FROM doors "
-                + get_select_door_WHERE() + LIMIT_QUERY;
-
-    runSQL(wnd_main->db, search.c_str());
+    wnd_main->db.runSQL("SELECT * FROM doors " +
+                        get_select_door_WHERE() + LIMIT_QUERY,
+                        db_callback_door);
 }
 
 //the callback for when a door is clicked on.
@@ -64,44 +59,42 @@ void cb_door_click(DoorButton* b, void*)
     door_options(b->get_door());
 }
 
-bool one_door = false;
-
-// This is the callback function to display the select data in the table
-// it is called for ever row taken from the table
-int db_callback(void *NotUsed, int col, char **values, char **colName)
+// This is called for every row in the database and
+//  creates a door button for each row
+int db_callback_door(void *NotUsed, int col, char **values, char **colName)
 {
-    if(col == 1)
+    //check if valid data came from the dataabase
+    if(values[0] && values[1] && values[2] && values[3])
     {
-        if(values[0][0] == '1' && values[0][1] == 0)
-        {
-            one_door = true;
-            cout << "found one door" << endl;
-        }
-    }
-    else
-    {
+        //create a door
         Door door(values[0],values[1],values[2],values[3]);
 
+        //create a button with the values
+        add_door(door);
+    }
+
+	return 0;
+}
+
+// This is the callback funtion for when there is only one door selected
+//  from the database.
+int db_callback_one_door(void *NotUsed, int col, char **values, char **colName)
+{
+    //check if valid data came from the dataabase
+    if(values[0] && values[1] && values[2] && values[3])
+    {
+        //create a door
+        Door door(values[0],values[1],values[2],values[3]);
+
+        //create a button with the values
         DoorButton *b = add_door(door);
 
-        if(one_door)
-        {
-            cout << "got it" << endl;
-            cb_door_click(b,0);
-            one_door = false;
-        }
-    }
-/*
-    //output the database for testing purposes
-    int i;
-    for(i=0; i<col; i++)
-    {
-        cout << colName[i] << ": " << values[i] << endl;
+        //for testing
+        //cout << "Just one door" << endl;
 
+        //click the button because it is the only one
+        cb_door_click(b,0);
     }
-    cout << endl;
-*/
-   // cout << ".";
 
 	return 0;
 }

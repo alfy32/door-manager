@@ -7,149 +7,70 @@ const string TABLE_PRICE_LIST = "price_list";
 
 void set_door_swing(bool single)
 {
+    string sql;
+
     if(single)
     {
-        lst_DoorSwing->add("LHSI",0,cb_swing,0);
-        lst_DoorSwing->add("LHSO",0,cb_swing,0);
-        lst_DoorSwing->add("RHSI",0,cb_swing,0);
-        lst_DoorSwing->add("RHSO",0,cb_swing,0);
+        wnd_main->db.runSQL(sql+"SELECT label FROM PriceList " +
+                        "WHERE list = 'DOOR_SWING_SINGLE'",
+                        db_callback_lst_door_swing);
     }
     else
     {
-        lst_DoorSwing->add("_Both Operate",0,0,0,FL_MENU_INACTIVE);
-        lst_DoorSwing->add("RHASI",0,cb_swing,0);
-        lst_DoorSwing->add("RHASO",0,cb_swing,0);
-        lst_DoorSwing->add("LHASI",0,cb_swing,0);
-        lst_DoorSwing->add("_LHASO",0,cb_swing,0);
-        lst_DoorSwing->add("_Left Stationary",0,0,0,FL_MENU_INACTIVE);
-        lst_DoorSwing->add("Left LHSI",0,cb_swing,0);
-        lst_DoorSwing->add("Left LHSO",0,cb_swing,0);
-        lst_DoorSwing->add("Left RHSI",0,cb_swing,0);
-        lst_DoorSwing->add("_Left RHSO",0,cb_swing,0);
-        lst_DoorSwing->add("_Right Stationary",0,0,0,FL_MENU_INACTIVE);
-        lst_DoorSwing->add("Right LHSI",0,cb_swing,0);
-        lst_DoorSwing->add("Right LHSO",0,cb_swing,0);
-        lst_DoorSwing->add("Right RHSI",0,cb_swing,0);
-        lst_DoorSwing->add("Right RHSO",0,cb_swing,0);
+        wnd_main->db.runSQL(sql+"SELECT label,type FROM PriceList " +
+                        "WHERE list = 'DOOR_SWING_DOUBLE'",
+                        db_callback_lst_door_swing);
     }
-}
-
-//run some SQL commands to read from the pice list and find the options
-// for the lists
-void set_lists()
-{
-	char *zErrMsg = 0;          //error variables
-	int rc;
-	string pSQL;                //SQL string to be executed
-	sqlite3 *db = wnd_main->db; //database pointer
-
-	pSQL = "SELECT * FROM " + TABLE_PRICE_LIST +
-            "WHERE list = 'JAMB_MATERIAL'";
-
-            //TODO finish this tomarrow
-
-    // run the SQL command and check for errors
-	if( SQLITE_OK != sqlite3_exec(db, pSQL.c_str(), db_callback, 0, &zErrMsg) )
-	{
-		//outputs the error message for testing
-		cout << endl << zErrMsg << endl;
-		//free the error
-		sqlite3_free(zErrMsg);
-	}
 }
 
 //sets the Jamb size list depending on the Jamb Material
 void set_jamb_size()
 {
+    lst_JambSize->clear();
+
     if(lst_JambMaterial->text())
     {
-        string jamb = lst_JambMaterial->text();
+        string sql = "SELECT label FROM PriceList ";
+        sql = sql + "WHERE list = 'JAMB_MATERIAL' " +
+                    "AND type = '" + lst_JambMaterial->text() + "'";
 
-        //clear the list
-        lst_JambSize->clear();
+        //output for testing
+        //cout << "JAMB MATERIAL: " << lst_JambMaterial->text() << endl;
+        //cout << sql << endl;
 
-        if(jamb == "Primed")
-        {
-            lst_JambSize->add("4-9\\/16 - 5-1\\/4",0,cb_update,0);
-            lst_JambSize->add("5-3\\/8 - 6-9\\/16",0,cb_update,0);
-            lst_JambSize->add("6-5\\/8 - 7-1\\/4",0,cb_update,0);
-            lst_JambSize->add("7-3\\/8 - 9-1\\/2",0,cb_update,0);
-        }
-        else if(jamb == "Oak")
-        {
-            lst_JambSize->add("4-9\\/16",0,cb_update,0);
-            lst_JambSize->add("6-9\\/16",0,cb_update,0);
-            lst_JambSize->add("4-9\\/16 8'0\"",0,cb_update,0);
-            lst_JambSize->add("6-9\\/16 8'0\"",0,cb_update,0);
-        }
-        else if(jamb == "Knotty Alder")
-        {
-            lst_JambSize->add("4-9\\/16",0,cb_update,0);
-            lst_JambSize->add("6-9\\/16",0,cb_update,0);
-        }
-        else if(jamb == "Solid Pine")
-        {
-            lst_JambSize->add("4-9\\/16",0,cb_update,0);
-            lst_JambSize->add("6-9\\/16",0,cb_update,0);
-        }
-        else if(jamb == "Composite")
-        {
-            lst_JambSize->add("4-9\\/16",0,cb_update,0);
-            lst_JambSize->add("6-9\\/16",0,cb_update,0);
-        }
-
+        wnd_main->db.runSQL(sql,
+                        db_callback_lst_jamb_size);
     }
-    lst_JambSize->redraw();
 }
 
-//runs an SQL statement and watches for an error
-void runSQL(sqlite3 *db, const char *pSQL)
+string fix_jamb_size(string source)
 {
-    //error variables
-	char *zErrMsg = 0;
-	int rc;
+    string fixed = "";
 
-    //execute the SQL
-	rc = sqlite3_exec(db, pSQL, db_callback, 0, &zErrMsg);
+    for(int i = 0; i < source.length(); i++)
+    {
+        if(source[i] == '/')
+            fixed += "\\/";
+        else
+            fixed += source[i];
+    }
+    return fixed;
+}
 
-	//if an error occurs
-	if( rc!=SQLITE_OK )
+// Replaces any ' with ''
+string sql_replace_single_quote(string source)
+{
+	string fixed = "";
+	int size = source.length();
+
+	for(int i = 0; i < size; i++)
 	{
-		//outputs the error message for testing
-		cout << endl << zErrMsg << endl;
-		sqlite3_free(zErrMsg);
+		if(source[i] == '\'')
+			fixed += "''";
+		else
+			fixed += source[i];
 	}
-}
-
-void price_calc()
-{
-
-}
-
-//opens the database and checks for errors
-void openDatabase(sqlite3 *db, string name)
-{
-    char *zErrMsg = 0;
-	int rc;
-
-	// Open the test.db file
-	rc = sqlite3_open(name.c_str(), &db);
-
-	if( rc ){
-		// failed
-		cout << "Can't open database: " << stderr << " " << sqlite3_errmsg(db);
-		//fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
-	}
-	else
-	{
-		// success
-		fprintf(stderr, "Open database successfully\n\n");
-	}
-}
-
-void infoDialogReady()
-{
-
+	return fixed;
 }
 
 //prints a pdf or straight to printer of a groupbox and its contents. The pdf printing requires ghostscript to be installed. Google it.

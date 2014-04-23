@@ -92,32 +92,26 @@ void door_options(Door door)
     opt_DoorStyle->value(door.style().c_str());
     opt_GlassStyle->value(door.glass_style().c_str());
 
-    //get the sizes for the door
-    lst_DoorSize->set_door_style((sqlite3*)wnd_main->user_data(),door.style());
-
-    //TODO make this come from a database
-
     ///to set up the options window
+
+    //get the sizes for the door
+    lst_DoorSize->set_door_style(wnd_main->db.getDatabase(),door.style());
 
     set_door_swing(true);
 
-    lst_Sill->add("Mill",0,cb_update,0);
-    lst_Sill->add("Bronze",0,cb_update,0);
-    lst_Sill->add("Brass",0,cb_update,0);
-    lst_Sill->add("Oak",0,cb_update,0);
+    string sql;
 
-    lst_HingeColor->add("Brass",0,cb_update,0);
-    lst_HingeColor->add("Brush Nickel",0,cb_update,0);
-    lst_HingeColor->add("Chrome",0,cb_update,0);
-    lst_HingeColor->add("Oil Rub Bronze",0,cb_update,0);
-    lst_HingeColor->add("Black",0,cb_update,0);
-    lst_HingeColor->add("White",0,cb_update,0);
-
-    lst_JambMaterial->add("Primed",0,cb_jamb,0);
-    lst_JambMaterial->add("Oak",0,cb_jamb,0);
-    lst_JambMaterial->add("Knotty Alder",0,cb_jamb,0);
-    lst_JambMaterial->add("Solid Pine",0,cb_jamb,0);
-    lst_JambMaterial->add("Composite",0,cb_jamb,0);
+    wnd_main->db.runSQL(sql+"SELECT label FROM PriceList " +
+                        "WHERE list = 'SILL' " +
+                        "AND type = 'SILL'",
+                        db_callback_lst_sill);
+    wnd_main->db.runSQL(sql+"SELECT label FROM PriceList " +
+                        "WHERE list = 'HINGE' " +
+                        "AND type = 'COLOR'",
+                         db_callback_lst_hinge_color);
+    wnd_main->db.runSQL(sql+"SELECT type FROM PriceList "+
+                        "WHERE list = 'JAMB_MATERIAL'",
+                         db_callback_lst_jamb_material);
 
     set_jamb_size();
 }

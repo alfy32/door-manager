@@ -2,6 +2,7 @@
 #define FUNCTIONS_H
 
 #include "fltkgui.h"
+#include "Alfy_SQL.h"
 #include "sqlite3.h"
 #include "door.h"
 #include "DoorButton.h"
@@ -34,28 +35,35 @@ string strip_quotes(string);
 //void cb_SearchTextChanged(Fl_Input* input, void*);
 //void cb_resize(Fl_Double_Window* w);
 //void cb_door_click(Fl_Button*, void* data);
-//int db_callback(void *NotUsed, int col, char **values, char **colName);
-//int db_callback_size(void *NotUsed, int col, char **values, char **colName);
+int db_callback_door(void *NotUsed, int col, char **values, char **colName);
+int db_callback_one_door(void *NotUsed, int col, char **values, char **colName);
 
 ///**functions_main
 void restart_doors();
 string get_select_door_WHERE();
 DoorButton *add_door(Door door);
 void door_options(Door door);
-void get_sizes(string style);
-void get_prices(string style);
 
 ///*callbacks_options
+void cb_Door_Size_Chooser(Fl_Widget *w, void*v);
 void cb_jamb(Fl_Widget *w, void *v);
+void cb_jamb_size(Fl_Widget *w, void *v);
+void cb_update(Fl_Widget*, void*);
+int db_callback_lst_sill(void *NotUsed, int col, char **values, char **colName);
+int db_callback_lst_hinge_color(void *NotUsed, int col, char **values, char **colName);
+int db_callback_lst_jamb_material(void *NotUsed, int col, char **values, char **colName);
+int db_callback_lst_jamb_size(void *NotUsed, int col, char **values, char **colName);
+int db_callback_lst_door_swing(void *NotUsed, int col, char **values, char **colName);
+int db_callback_NetFrame_RO(void *NotUsed, int col, char **values, char **colName);
 
 ///**functions_options
 void set_door_swing(bool single);
 void set_jamb_size();
+string fix_jamb_size(string source);
+string sql_replace_single_quote(string source);
+void printGroupBox(Fl_Group* grouptoprint, bool printpdf);
 
 
-
-const char FILE_PRICE[] = "prices.csv";
-const char FILE_SIZE[] = "sizes.csv";
 
 int db_callback(void *NotUsed, int col, char **values, char **colName);
 int db_callback_price(void *NotUsed, int col, char **values, char **colName);

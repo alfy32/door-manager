@@ -144,7 +144,7 @@ int Door_Size_Chooser::load_sizes_sql(void *NotUsed, int col, char **values, cha
     for(int i = 1; i < col; i++)
     {
         //output for testing
-        cout << colName[i] << ": " << values[i] << endl;
+        //cout << colName[i] << ": " << values[i] << endl;
 
         //add each size to the vector
         sizes.push_back(DoorSize(values[i]));
@@ -164,10 +164,10 @@ int Door_Size_Chooser::load_prices_sql(void *NotUsed, int col, char **values, ch
         price_double = string_to_float(values[2]);
 
     //output for testing
-    for(int i = 0; i < col; i++)
-    {
-        cout << colName[i] << ": " << values[i] << endl;
-    }
+    //for(int i = 0; i < col; i++)
+    //{
+    //    cout << colName[i] << ": " << values[i] << endl;
+    //}
 }
 
 //SQL callback for which doors are available
@@ -179,7 +179,7 @@ int Door_Size_Chooser::load_available_sql(void *NotUsed, int col, char **values,
     for(int i = 1; i < col; i++)
     {
         //output for testing
-        cout << colName[i] << ": " << values[i] << endl;
+        //cout << colName[i] << ": " << values[i] << endl;
 
         //add each size to the vector
         if(values[i])

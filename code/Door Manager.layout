@@ -1,23 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
-	<ActiveTarget name="Debug" />
-	<File name="DoorButton.cpp" open="1" top="1" tabpos="3">
-		<Cursor position="918" topLine="0" />
+	<ActiveTarget name="Release" />
+	<File name="Alfy_SQL.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="3773" topLine="212" />
+	</File>
+	<File name="Alfy_SQL.h" open="0" top="0" tabpos="8">
+		<Cursor position="588" topLine="18" />
+	</File>
+	<File name="DoorButton.cpp" open="0" top="0" tabpos="6">
+		<Cursor position="1095" topLine="16" />
 	</File>
 	<File name="DoorButton.h" open="0" top="0" tabpos="0">
-		<Cursor position="135" topLine="0" />
+		<Cursor position="375" topLine="0" />
 	</File>
-	<File name="Door_Size_Chooser.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="1104" topLine="41" />
+	<File name="DoorSize.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="1573" topLine="48" />
 	</File>
-	<File name="Door_Size_Chooser.h" open="0" top="0" tabpos="0">
-		<Cursor position="2169" topLine="38" />
+	<File name="Door_Size_Chooser.cpp" open="0" top="0" tabpos="9">
+		<Cursor position="297" topLine="0" />
 	</File>
-	<File name="callbacks_main.cpp" open="0" top="0" tabpos="2">
-		<Cursor position="2482" topLine="62" />
+	<File name="Door_Size_Chooser.h" open="0" top="0" tabpos="10">
+		<Cursor position="621" topLine="31" />
 	</File>
-	<File name="callbacks_options.cpp" open="0" top="0" tabpos="4">
-		<Cursor position="883" topLine="75" />
+	<File name="callbacks_main.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="1971" topLine="37" />
+	</File>
+	<File name="callbacks_options.cpp" open="1" top="1" tabpos="3">
+		<Cursor position="7863" topLine="221" />
 	</File>
 	<File name="callbacks_print.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="593" topLine="0" />
@@ -26,28 +35,25 @@
 		<Cursor position="441" topLine="0" />
 	</File>
 	<File name="door.h" open="0" top="0" tabpos="7">
-		<Cursor position="659" topLine="5" />
+		<Cursor position="659" topLine="11" />
 	</File>
-	<File name="door_loader - Copy.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="1025" topLine="24" />
-	</File>
-	<File name="fltkgui.cpp" open="1" top="0" tabpos="2">
-		<Cursor position="1037" topLine="36" />
+	<File name="fltkgui.cpp" open="0" top="0" tabpos="8">
+		<Cursor position="12686" topLine="308" />
 	</File>
 	<File name="fltkgui.h" open="0" top="0" tabpos="9">
-		<Cursor position="329" topLine="0" />
+		<Cursor position="331" topLine="0" />
 	</File>
 	<File name="functions.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="2924" topLine="0" />
+		<Cursor position="2924" topLine="24" />
 	</File>
-	<File name="functions.h" open="0" top="0" tabpos="10">
-		<Cursor position="732" topLine="11" />
+	<File name="functions.h" open="1" top="0" tabpos="5">
+		<Cursor position="1489" topLine="38" />
 	</File>
-	<File name="functions_main.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="3641" topLine="97" />
+	<File name="functions_main.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="2712" topLine="83" />
 	</File>
-	<File name="functions_options.cpp" open="0" top="0" tabpos="5">
-		<Cursor position="518" topLine="11" />
+	<File name="functions_options.cpp" open="1" top="0" tabpos="4">
+		<Cursor position="3640" topLine="37" />
 	</File>
 	<File name="functions_print.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="169" topLine="0" />
@@ -56,6 +62,6 @@
 		<Cursor position="36" topLine="0" />
 	</File>
 	<File name="sqlite3.c" open="0" top="0" tabpos="0">
-		<Cursor position="3223724" topLine="90743" />
+		<Cursor position="3223805" topLine="90761" />
 	</File>
 </CodeBlocks_layout_file>

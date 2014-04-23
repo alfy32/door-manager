@@ -12,10 +12,10 @@ void Resize_Window::resize(int X,int Y,int W,int H) {
   //save the old width and height
   int width = w();
   int height = h();
-
+  
   //do the normal resize
   Fl_Double_Window::resize(X, Y, W, H);
-
+  
   //check if it ws changed
   if(W != width || H != height)
      cb_resize(this);
@@ -39,32 +39,9 @@ Fl_Group *grp_DoorGrid=(Fl_Group *)0;
 
 Fl_Scroll *scroll_DoorGrid=(Fl_Scroll *)0;
 
-int door_loader();
-
 int main(int argc, char **argv) {
-   // door_loader();
   Fl::scheme("gtk+");
   Fl::option(Fl::OPTION_ARROW_FOCUS, true);
-  //database structure
-  	sqlite3 *db;
-
-  	//error variable
-  	char *zErrMsg = 0;
-  	int rc;
-
-  	// Open the test.db file
-  	rc = sqlite3_open("Data\\doors.db", &db);
-
-  	if( rc ){
-  		// failed
-  		cout << "Can't open database: " << stderr << " " << sqlite3_errmsg(db);
-  		//fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
-  	}
-  	else
-  	{
-  		// success
-  		fprintf(stderr, "Open database successfully\n\n");
-  	}
   { wnd_main = new Resize_Window(780, 547, "Door Manager");
     wnd_main->box(FL_FLAT_BOX);
     wnd_main->color((Fl_Color)55);
@@ -73,7 +50,6 @@ int main(int argc, char **argv) {
     wnd_main->labelfont(0);
     wnd_main->labelsize(14);
     wnd_main->labelcolor(FL_FOREGROUND_COLOR);
-    wnd_main->user_data((void*)(db));
     wnd_main->align(Fl_Align(FL_ALIGN_CLIP|FL_ALIGN_INSIDE));
     wnd_main->when(FL_WHEN_RELEASE);
     { grp_Sidebar = new Fl_Group(0, 0, 260, 547);
@@ -120,7 +96,8 @@ int main(int argc, char **argv) {
       grp_DoorGrid->end();
       Fl_Group::current()->resizable(grp_DoorGrid);
     } // Fl_Group* grp_DoorGrid
-    wnd_main->db = db;
+    wnd_main->db.setName("Data\\doors.db");
+    wnd_main->db.open();
     wnd_main->size_range(522, 277);
     wnd_main->end();
   } // Resize_Window* wnd_main
@@ -160,8 +137,6 @@ Fl_Input *txt_Date=(Fl_Input *)0;
 Fl_Choice *lst_JambMaterial=(Fl_Choice *)0;
 
 Fl_Choice *lst_JambSize=(Fl_Choice *)0;
-
-Fl_Check_Button *chk_NeedsRipping=(Fl_Check_Button *)0;
 
 Fl_Input *txt_CustomRipSize=(Fl_Input *)0;
 
@@ -278,13 +253,9 @@ Fl_Double_Window* make_door_info_dialog() {
         lst_JambSize->down_box(FL_BORDER_BOX);
         lst_JambSize->color((Fl_Color)55);
       } // Fl_Choice* lst_JambSize
-      { chk_NeedsRipping = new Fl_Check_Button(510, 295, 111, 25, "Needs Ripping");
-        chk_NeedsRipping->down_box(FL_DOWN_BOX);
-        chk_NeedsRipping->callback((Fl_Callback*)cb_NeedsRipping_click);
-      } // Fl_Check_Button* chk_NeedsRipping
-      { txt_CustomRipSize = new Fl_Input(630, 294, 140, 27);
+      { txt_CustomRipSize = new Fl_Input(594, 294, 140, 27, "Rip Jambs to:");
         txt_CustomRipSize->color((Fl_Color)55);
-        txt_CustomRipSize->deactivate();
+        txt_CustomRipSize->hide();
       } // Fl_Input* txt_CustomRipSize
       o->end();
     } // Fl_Group* o
@@ -331,17 +302,17 @@ Fl_Double_Window* make_door_info_dialog() {
         opt_Cost->deactivate();
       } // Fl_Value_Output* opt_Cost
       { val_Markup = new Fl_Value_Input(693, 417, 73, 27, "Percent Markup:");
-        val_Markup->callback((Fl_Callback*)cb_markup);
+        val_Markup->callback((Fl_Callback*)cb_update);
       } // Fl_Value_Input* val_Markup
       { val_LaborCost = new Fl_Value_Input(693, 450, 73, 27, "Labor Cost:");
-        val_LaborCost->callback((Fl_Callback*)cb_labor);
+        val_LaborCost->callback((Fl_Callback*)cb_update);
       } // Fl_Value_Input* val_LaborCost
       { val_Taxes = new Fl_Value_Input(693, 483, 73, 27, "Taxes Percent:");
-        val_Taxes->callback((Fl_Callback*)cb_labor);
+        val_Taxes->callback((Fl_Callback*)cb_update);
       } // Fl_Value_Input* val_Taxes
       { val_Total = new Fl_Value_Input(693, 515, 73, 26, "Total:");
       } // Fl_Value_Input* val_Total
-      { Fl_Box* o = new Fl_Box(654, 389, 40, 26, "Cost:");
+      { Fl_Box* o = new Fl_Box(654, 386, 40, 26, "Cost:");
         o->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
       } // Fl_Box* o
       o->end();
@@ -362,7 +333,6 @@ Fl_Double_Window* make_door_info_dialog() {
     } // Fl_Group* o
     o->end();
   } // Fl_Double_Window* o
-  infoDialogReady();
   return w;
 }
 
@@ -559,13 +529,19 @@ static unsigned char idata_HOG[] =
 231,169,162,181,104,164,219,110,236,15,255,217};
 static Fl_JPEG_Image image_HOG("HOG Logo.jpg", idata_HOG);
 
+Fl_Box *opt_Print_NetFrame=(Fl_Box *)0;
+
+Fl_Box *opt_Print_RoughOpening=(Fl_Box *)0;
+
+Fl_Box *img_Print_swing=(Fl_Box *)0;
+
 Fl_Double_Window* make_print_dialog() {
   Fl_Double_Window* w;
-  { Fl_Double_Window* o = new Fl_Double_Window(655, 720, "Print Preview");
+  { Fl_Double_Window* o = new Fl_Double_Window(655, 728, "Print Preview");
     w = o;
     o->color(FL_BACKGROUND2_COLOR);
     o->align(Fl_Align(FL_ALIGN_CLIP|FL_ALIGN_INSIDE));
-    { grp_PrintGroup = new Fl_Group(0, 0, 655, 658);
+    { grp_PrintGroup = new Fl_Group(0, 0, 655, 661);
       { opt_Customer = new Fl_Box(400, 47, 205, 27);
         opt_Customer->labelfont(8);
         opt_Customer->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
@@ -586,51 +562,51 @@ Fl_Double_Window* make_print_dialog() {
         opt_Print_LocationName->labelfont(8);
         opt_Print_LocationName->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
       } // Fl_Box* opt_Print_LocationName
-      { opt_Print_DoorSize = new Fl_Box(150, 213, 205, 27);
+      { opt_Print_DoorSize = new Fl_Box(150, 192, 205, 27);
         opt_Print_DoorSize->labelfont(8);
         opt_Print_DoorSize->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
       } // Fl_Box* opt_Print_DoorSize
-      { opt_Print_DoorMaterial = new Fl_Box(150, 248, 205, 27);
+      { opt_Print_DoorMaterial = new Fl_Box(150, 220, 205, 27);
         opt_Print_DoorMaterial->labelfont(8);
         opt_Print_DoorMaterial->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
       } // Fl_Box* opt_Print_DoorMaterial
-      { opt_Print_DoorStyle = new Fl_Box(150, 284, 205, 27);
+      { opt_Print_DoorStyle = new Fl_Box(150, 248, 205, 27);
         opt_Print_DoorStyle->labelfont(8);
         opt_Print_DoorStyle->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
       } // Fl_Box* opt_Print_DoorStyle
-      { opt_Print_DoorSwing = new Fl_Box(150, 320, 205, 27);
+      { opt_Print_DoorSwing = new Fl_Box(150, 276, 205, 27);
         opt_Print_DoorSwing->labelfont(8);
         opt_Print_DoorSwing->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
       } // Fl_Box* opt_Print_DoorSwing
-      { opt_Print_DoorDesign = new Fl_Box(150, 355, 205, 27);
+      { opt_Print_DoorDesign = new Fl_Box(150, 304, 205, 27);
         opt_Print_DoorDesign->labelfont(8);
         opt_Print_DoorDesign->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
       } // Fl_Box* opt_Print_DoorDesign
-      { opt_Print_JambSize = new Fl_Box(150, 391, 205, 27);
+      { opt_Print_JambSize = new Fl_Box(150, 360, 205, 27);
         opt_Print_JambSize->labelfont(8);
         opt_Print_JambSize->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
       } // Fl_Box* opt_Print_JambSize
-      { opt_Print_JambMaterial = new Fl_Box(150, 427, 205, 27);
+      { opt_Print_JambMaterial = new Fl_Box(150, 332, 205, 27);
         opt_Print_JambMaterial->labelfont(8);
         opt_Print_JambMaterial->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
       } // Fl_Box* opt_Print_JambMaterial
-      { opt_Print_Sill = new Fl_Box(150, 462, 205, 27);
+      { opt_Print_Sill = new Fl_Box(150, 444, 205, 27);
         opt_Print_Sill->labelfont(8);
         opt_Print_Sill->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
       } // Fl_Box* opt_Print_Sill
-      { opt_Print_GlassStyle = new Fl_Box(150, 498, 205, 27);
+      { opt_Print_GlassStyle = new Fl_Box(150, 472, 205, 27);
         opt_Print_GlassStyle->labelfont(8);
         opt_Print_GlassStyle->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
       } // Fl_Box* opt_Print_GlassStyle
-      { opt_Print_HingeColor = new Fl_Box(150, 534, 205, 27);
+      { opt_Print_HingeColor = new Fl_Box(150, 500, 205, 27);
         opt_Print_HingeColor->labelfont(8);
         opt_Print_HingeColor->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
       } // Fl_Box* opt_Print_HingeColor
-      { opt_Print_Price = new Fl_Box(150, 610, 205, 27);
+      { opt_Print_Price = new Fl_Box(150, 631, 205, 27);
         opt_Print_Price->labelfont(8);
         opt_Print_Price->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
       } // Fl_Box* opt_Print_Price
-      { opt_Print_Notes = new Fl_Box(370, 462, 230, 175);
+      { opt_Print_Notes = new Fl_Box(370, 470, 230, 175);
         opt_Print_Notes->box(FL_EMBOSSED_FRAME);
         opt_Print_Notes->labelfont(8);
         opt_Print_Notes->align(Fl_Align(133|FL_ALIGN_INSIDE));
@@ -696,47 +672,47 @@ Fl_Double_Window* make_print_dialog() {
         o->labelfont(8);
         o->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
       } // Fl_Box* o
-      { Fl_Box* o = new Fl_Box(50, 213, 100, 27, "Door Size:");
+      { Fl_Box* o = new Fl_Box(50, 192, 100, 27, "Door Size:");
         o->labelfont(8);
         o->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
       } // Fl_Box* o
-      { Fl_Box* o = new Fl_Box(50, 248, 100, 27, "Door Material:");
+      { Fl_Box* o = new Fl_Box(50, 220, 100, 27, "Door Material:");
         o->labelfont(8);
         o->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
       } // Fl_Box* o
-      { Fl_Box* o = new Fl_Box(50, 284, 100, 27, "Door Style/#:");
+      { Fl_Box* o = new Fl_Box(50, 248, 100, 27, "Door Style/#:");
         o->labelfont(8);
         o->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
       } // Fl_Box* o
-      { Fl_Box* o = new Fl_Box(50, 320, 100, 27, "Door Swing:");
+      { Fl_Box* o = new Fl_Box(50, 276, 100, 27, "Door Swing:");
         o->labelfont(8);
         o->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
       } // Fl_Box* o
-      { Fl_Box* o = new Fl_Box(50, 391, 100, 27, "Jamb Size:");
+      { Fl_Box* o = new Fl_Box(50, 360, 100, 27, "Jamb Size:");
         o->labelfont(8);
         o->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
       } // Fl_Box* o
-      { Fl_Box* o = new Fl_Box(50, 427, 100, 27, "Jamb Material:");
+      { Fl_Box* o = new Fl_Box(50, 332, 100, 27, "Jamb Material:");
         o->labelfont(8);
         o->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
       } // Fl_Box* o
-      { Fl_Box* o = new Fl_Box(50, 462, 100, 27, "Sill:");
+      { Fl_Box* o = new Fl_Box(50, 444, 100, 27, "Sill:");
         o->labelfont(8);
         o->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
       } // Fl_Box* o
-      { Fl_Box* o = new Fl_Box(50, 498, 100, 27, "Glass Style/#:");
+      { Fl_Box* o = new Fl_Box(50, 472, 100, 27, "Glass Style/#:");
         o->labelfont(8);
         o->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
       } // Fl_Box* o
-      { Fl_Box* o = new Fl_Box(50, 534, 100, 27, "Hinge Color:");
+      { Fl_Box* o = new Fl_Box(50, 500, 100, 27, "Hinge Color:");
         o->labelfont(8);
         o->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
       } // Fl_Box* o
-      { Fl_Box* o = new Fl_Box(50, 610, 100, 27, "Price:");
+      { Fl_Box* o = new Fl_Box(50, 631, 100, 27, "Price:");
         o->labelfont(8);
         o->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
       } // Fl_Box* o
-      { Fl_Box* o = new Fl_Box(370, 442, 100, 18, "Notes:");
+      { Fl_Box* o = new Fl_Box(370, 451, 100, 18, "Notes:");
         o->labelfont(8);
         o->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
       } // Fl_Box* o
@@ -744,7 +720,7 @@ Fl_Double_Window* make_print_dialog() {
         o->labelfont(10);
         o->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
       } // Fl_Box* o
-      { Fl_Box* o = new Fl_Box(50, 355, 100, 27, "Door Design:");
+      { Fl_Box* o = new Fl_Box(50, 304, 100, 27, "Door Design:");
         o->labelfont(8);
         o->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
       } // Fl_Box* o
@@ -772,21 +748,39 @@ Fl_Double_Window* make_print_dialog() {
         o->labelfont(8);
         o->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
       } // Fl_Box* o
+      { opt_Print_NetFrame = new Fl_Box(150, 388, 205, 27);
+        opt_Print_NetFrame->labelfont(8);
+        opt_Print_NetFrame->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
+      } // Fl_Box* opt_Print_NetFrame
+      { Fl_Box* o = new Fl_Box(50, 388, 100, 27, "Net Frame Size:");
+        o->labelfont(8);
+        o->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
+      } // Fl_Box* o
+      { opt_Print_RoughOpening = new Fl_Box(150, 416, 205, 27);
+        opt_Print_RoughOpening->labelfont(8);
+        opt_Print_RoughOpening->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
+      } // Fl_Box* opt_Print_RoughOpening
+      { Fl_Box* o = new Fl_Box(50, 416, 100, 27, "Rough Opening:");
+        o->labelfont(8);
+        o->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));
+      } // Fl_Box* o
+      { img_Print_swing = new Fl_Box(281, 470, 75, 175);
+      } // Fl_Box* img_Print_swing
       grp_PrintGroup->end();
     } // Fl_Group* grp_PrintGroup
-    { Fl_Group* o = new Fl_Group(0, 663, 655, 57);
+    { Fl_Group* o = new Fl_Group(0, 672, 655, 57);
       o->box(FL_FLAT_BOX);
       o->color((Fl_Color)23);
-      { Fl_Button* o = new Fl_Button(425, 678, 100, 27, "Print");
+      { Fl_Button* o = new Fl_Button(425, 687, 100, 27, "Print");
         o->down_box(FL_DOWN_BOX);
         o->callback((Fl_Callback*)cb_Preview_PrintClicked);
         o->align(Fl_Align(FL_ALIGN_CENTER|FL_ALIGN_INSIDE));
       } // Fl_Button* o
-      { Fl_Button* o = new Fl_Button(535, 678, 100, 27, "Cancel");
+      { Fl_Button* o = new Fl_Button(535, 687, 100, 27, "Cancel");
         o->down_box(FL_DOWN_BOX);
         o->callback((Fl_Callback*)cb_Preview_CancelClicked);
       } // Fl_Button* o
-      { Fl_Button* o = new Fl_Button(315, 678, 100, 27, "Make PDF");
+      { Fl_Button* o = new Fl_Button(315, 687, 100, 27, "Make PDF");
         o->down_box(FL_DOWN_BOX);
         o->callback((Fl_Callback*)cb_Preview_MakePDFClicked);
         o->align(Fl_Align(FL_ALIGN_CENTER|FL_ALIGN_INSIDE));

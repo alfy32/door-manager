@@ -4,7 +4,7 @@
 #define fltkgui_h
 #include <FL/Fl.H>
 #include <SI/Si_Button.H>
-#include "sqlite3.h"
+#include "Alfy_SQL.h"
 #include "functions.h"
 #include "door.h"
 #include <iostream>
@@ -17,7 +17,7 @@ public:
   Resize_Window(int W, int H, const char *l = 0);
   Resize_Window(int X, int Y, int W, int H, const char *l = 0);
   void resize(int X,int Y,int W,int H);
-  sqlite3 *db; 
+  Alfy_SQL db; 
 };
 extern Resize_Window *wnd_main;
 #include <FL/Fl_Group.H>
@@ -58,11 +58,9 @@ extern Fl_Input *txt_Job;
 extern Fl_Input *txt_Date;
 extern Fl_Choice *lst_JambMaterial;
 extern Fl_Choice *lst_JambSize;
-#include <FL/Fl_Check_Button.H>
-extern void cb_NeedsRipping_click(Fl_Check_Button*, void*);
-extern Fl_Check_Button *chk_NeedsRipping;
 extern Fl_Input *txt_CustomRipSize;
 extern Fl_Input *txt_Notes;
+#include <FL/Fl_Check_Button.H>
 extern void cb_update(Fl_Check_Button*, void*);
 extern Fl_Check_Button *chk_NoBrickmold;
 extern Fl_Check_Button *chk_DeadBolt;
@@ -72,9 +70,8 @@ extern Fl_Check_Button *chk_ADASill;
 extern Fl_Check_Button *chk_SpringHinge;
 extern Fl_Value_Output *opt_Cost;
 #include <FL/Fl_Value_Input.H>
-extern void cb_markup(Fl_Value_Input*, void*);
+extern void cb_update(Fl_Value_Input*, void*);
 extern Fl_Value_Input *val_Markup;
-extern void cb_labor(Fl_Value_Input*, void*);
 extern Fl_Value_Input *val_LaborCost;
 extern Fl_Value_Input *val_Taxes;
 extern Fl_Value_Input *val_Total;
@@ -107,6 +104,9 @@ extern Fl_Check_Button *chk_Print_OutswingSill;
 extern Fl_Check_Button *chk_Print_ADASill;
 extern Fl_Check_Button *chk_Print_SpringHinge;
 extern Fl_Box *opt_CompanyInfo;
+extern Fl_Box *opt_Print_NetFrame;
+extern Fl_Box *opt_Print_RoughOpening;
+extern Fl_Box *img_Print_swing;
 extern void cb_Preview_PrintClicked(Fl_Button*, void*);
 extern void cb_Preview_CancelClicked(Fl_Button*, void*);
 extern void cb_Preview_MakePDFClicked(Fl_Button*, void*);

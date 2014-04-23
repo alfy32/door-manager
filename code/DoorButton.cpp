@@ -1,5 +1,4 @@
 #include "DoorButton.h"
-#include <iostream>
 
 DoorButton::DoorButton(int X, int Y, int W, int H, const char *L)
 :Fl_Button(X,Y,W,H,L)
@@ -11,42 +10,7 @@ DoorButton::DoorButton(int X, int Y, int W, int H, const char *L)
 // puts a label on the button
 void DoorButton::add_door(Door door_)
 {
-    int SIZE = 2000000;
-    string name = "CCV932.jpg";
-
     door = door_;
-
-    string d;
-    char ch;
-    char *stuff; // = new char[SIZE];
-
-    string filename = "doors\\" + name;
-    fstream file(filename.c_str(), ios::in | ios::binary);
-    file.seekg(0L, ios::end);
-    //cout << "filesize: " << file.tellg() << endl;
-    SIZE = file.tellg();
-    int i = 0;
-
-    stuff = new char[SIZE];
-
-    file.clear();
-    file.seekg(0L, ios::beg);
-    file.read(reinterpret_cast<char*>(stuff), SIZE);
-
-/*
-    while(!file.eof())
-    {
-        stuff[i++] = file.get();
-    }
-    d = stuff;
-    cout << d.size() << endl;
-    cout << d << endl;
-*/
-    Fl_JPEG_Image *img;
-
-
-
-    img = new Fl_JPEG_Image("pic", (unsigned char*)stuff);
    /* Fl_JPEG_Image *img;     //the image of the door for each button
 
     //find the picture and load it
@@ -64,8 +28,6 @@ void DoorButton::add_door(Door door_)
         image(img->copy(72,160));
     }
 */
-    image(img->copy(72,160));
-
     //make the label for the door
     string label = "Style:" + door.style() +
                 " \nMaterial: " + door.material() +
