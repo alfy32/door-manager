@@ -1,0 +1,396 @@
+# depslib dependency file v1.0
+1314038436 source:c:\dev\projects\product inventory 1.0\functions.cpp
+	"functions.h"
+
+1314046721 c:\dev\projects\product inventory 1.0\fltkgui.h
+	<FL/Fl.H>
+	"functions.h"
+	<SI/Si_Button.H>
+	<FL/Fl_Double_Window.H>
+	<FL/Fl_Group.H>
+	<FL/Fl_Input.H>
+	<Alfy/Alfy_Money_Input.h>
+	<FL/Fl_Float_Input.H>
+	<SI/Si_Button.H>
+	<FL/Fl_Int_Input.H>
+	<FL/Fl_Text_Display.H>
+	<FL/Fl_Check_Button.H>
+	<FL/Fl_Choice.H>
+	<Alfy/Alfy_Table.h>
+
+1314039739 c:\dev\projects\product inventory 1.0\functions.h
+	"fltkgui.h"
+	<FL/fl_ask.h>
+	<Alfy/Alfy_Database_Template_Indexed.h>
+	<Alfy/Alfy_Product.h>
+	<Alfy/Alfy_Stock.h>
+	<Alfy/Alfy_Strings.h>
+
+1314046721 source:c:\dev\projects\product inventory 1.0\fltkgui.cpp
+	"fltkgui.h"
+	<FL/Fl_Pixmap.H>
+
+1314042189 source:c:\dev\projects\product inventory 1.0\callbacks.cpp
+	"fltkgui.h"
+
+1314046678 source:c:\dev\projects\product inventory 1.0\alfy_table.cpp
+	<Alfy/Alfy_Table.h>
+
+1334281184 source:c:\users\others\desktop\door manager\fltkgui.cpp
+	"fltkgui.h"
+
+1334282789 c:\users\others\desktop\door manager\fltkgui.h
+	<FL/Fl.H>
+	"functions.h"
+	<SI/Si_Button.H>
+	<FL/Fl_Double_Window.H>
+	<FL/Fl_Group.H>
+	<FL/Fl_Input.H>
+	<FL/Fl_Browser.H>
+	<FL/Fl_Button.H>
+	<FL/Fl_Box.H>
+	<FL/Fl_Pack.H>
+	<FL/Fl_Menu_Button.H>
+	<FL/Fl_Check_Button.H>
+	<FL/Fl_Text_Editor.H>
+
+1314039740 c:\users\others\desktop\door manager\functions.h
+	"fltkgui.h"
+	<FL/fl_ask.h>
+	<Alfy/Alfy_Database_Template_Indexed.h>
+	<Alfy/Alfy_Product.h>
+	<Alfy/Alfy_Stock.h>
+	<Alfy/Alfy_Strings.h>
+
+1334281134 source:c:\users\others\desktop\door manager\functions.cpp
+	"functions.h"
+
+1314049770 source:c:\users\others\desktop\door manager\resources.rc
+
+1334281246 source:c:\users\others\desktop\door manager\callbacks.cpp
+	"fltkgui.h"
+
+1336171752 source:c:\dev\projects\door manager\fltkgui.cpp
+	"fltkgui.h"
+	<FL/Fl_JPEG_Image.H>
+
+1336157783 c:\dev\projects\door manager\fltkgui.h
+	<FL/Fl.H>
+	<SI/Si_Button.H>
+	"sqlite3.h"
+	"functions.h"
+	"door.h"
+	<iostream>
+	<FL/Fl_Double_Window.H>
+	<FL/Fl_Group.H>
+	<FL/Fl_Input.H>
+	<FL/Fl_Browser.H>
+	<FL/Fl_Scroll.H>
+	<FL/Fl_Button.H>
+	<FL/Fl_Box.H>
+	<FL/Fl_Pack.H>
+	<FL/Fl_Menu_Button.H>
+	<FL/Fl_Check_Button.H>
+	<FL/Fl_Text_Editor.H>
+	<FL/Fl_Value_Input.H>
+	<FL/Fl_Output.H>
+
+1336171302 c:\dev\projects\door manager\functions.h
+	"fltkgui.h"
+	"sqlite3.h"
+	"door.h"
+	<FL/Fl_Double_Window.H>
+	<FL/FL_JPEG_IMAGE.H>
+
+1336171773 source:c:\dev\projects\door manager\functions.cpp
+	"functions.h"
+	<FL/FL_JPEG_IMAGE.H>
+
+1335893212 source:c:\dev\projects\door manager\resources.rc
+
+1336171333 source:c:\dev\projects\door manager\callbacks.cpp
+	"fltkgui.h"
+
+1334432110 source:c:\dev\projects\door manager\door.cpp
+	"door.h"
+
+1334422618 c:\dev\projects\door manager\door.h
+	<fstream>
+	<string>
+
+1331837286 c:\dev\projects\door manager\sqlite3.h
+	<stdarg.h>
+
+1331837286 source:c:\dev\projects\door manager\sqlite3.c
+	"config.h"
+	<stdint.h>
+	<inttypes.h>
+	<tcl.h>
+	<stdarg.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	<stddef.h>
+	<windows.h>
+	<os2safe.h>
+	<os2.h>
+	<uconv.h>
+	<ctype.h>
+	<time.h>
+	<sys/sysctl.h>
+	<malloc/malloc.h>
+	<libkern/OSAtomic.h>
+	<malloc.h>
+	<pthread.h>
+	<math.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<fcntl.h>
+	<unistd.h>
+	<sys/time.h>
+	<errno.h>
+	<sys/mman.h>
+	<sys/ioctl.h>
+	<semaphore.h>
+	<limits.h>
+	<sys/file.h>
+	<sys/param.h>
+	<sys/mount.h>
+	<utime.h>
+	<dlfcn.h>
+	<sys/cygwin.h>
+	"sqlite3rtree.h"
+	<unicode/utypes.h>
+	<unicode/uregex.h>
+	<unicode/ustring.h>
+	<unicode/ucol.h>
+	<unicode/ubrk.h>
+	<unicode/utf16.h>
+
+1334432110 source:c:\users\alfy\skydrive\programming\door manager\door.cpp
+	"door.h"
+
+1334422618 c:\users\alfy\skydrive\programming\door manager\door.h
+	<fstream>
+	<string>
+
+1336534056 source:c:\users\alfy\skydrive\programming\door manager\fltkgui.cpp
+	"fltkgui.h"
+	<FL/Fl_JPEG_Image.H>
+
+1336530903 c:\users\alfy\skydrive\programming\door manager\fltkgui.h
+	<FL/Fl.H>
+	<SI/Si_Button.H>
+	"sqlite3.h"
+	"functions.h"
+	"door.h"
+	<iostream>
+	<FL/Fl_Double_Window.H>
+	<FL/Fl_Choice.H>
+	<FL/Fl_Group.H>
+	<FL/Fl_Input.H>
+	<FL/Fl_Browser.H>
+	<FL/Fl_Scroll.H>
+	<FL/Fl_Double_Window.H>
+	<FL/Fl_Button.H>
+	<FL/Fl_Box.H>
+	<FL/Fl_Pack.H>
+	<FL/Fl_Menu_Button.H>
+	<FL/Fl_Check_Button.H>
+	<FL/Fl_Text_Editor.H>
+	<FL/Fl_Choice.H>
+	<FL/Fl_Value_Output.H>
+	<FL/Fl_Value_Input.H>
+	<FL/Fl_Output.H>
+
+1331837286 c:\users\alfy\skydrive\programming\door manager\sqlite3.h
+	<stdarg.h>
+
+1336531340 c:\users\alfy\skydrive\programming\door manager\functions.h
+	"fltkgui.h"
+	"sqlite3.h"
+	"door.h"
+	<FL/Fl_Double_Window.H>
+	<FL/FL_JPEG_IMAGE.H>
+	<FL/Fl_Printer.H>
+	<FL/Fl_PostScript.H>
+	<stdio.h>
+	<stdlib.h>
+
+1336533816 source:c:\users\alfy\skydrive\programming\door manager\functions.cpp
+	"functions.h"
+	<FL/FL_JPEG_IMAGE.H>
+
+1335893212 source:c:\users\alfy\skydrive\programming\door manager\resources.rc
+
+1331837286 source:c:\users\alfy\skydrive\programming\door manager\sqlite3.c
+	"config.h"
+	<stdint.h>
+	<inttypes.h>
+	<tcl.h>
+	<stdarg.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	<stddef.h>
+	<windows.h>
+	<os2safe.h>
+	<os2.h>
+	<uconv.h>
+	<ctype.h>
+	<time.h>
+	<sys/sysctl.h>
+	<malloc/malloc.h>
+	<libkern/OSAtomic.h>
+	<malloc.h>
+	<pthread.h>
+	<math.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<fcntl.h>
+	<unistd.h>
+	<sys/time.h>
+	<errno.h>
+	<sys/mman.h>
+	<sys/ioctl.h>
+	<semaphore.h>
+	<limits.h>
+	<sys/file.h>
+	<sys/param.h>
+	<sys/mount.h>
+	<utime.h>
+	<dlfcn.h>
+	<sys/cygwin.h>
+	"sqlite3rtree.h"
+	<unicode/utypes.h>
+	<unicode/uregex.h>
+	<unicode/ustring.h>
+	<unicode/ucol.h>
+	<unicode/ubrk.h>
+	<unicode/utf16.h>
+
+1336533412 source:c:\users\alfy\skydrive\programming\door manager\callbacks.cpp
+	"fltkgui.h"
+
+1336533412 source:c:\users\alfy\skydrive\programming\door manager\callbacks_options.cpp
+	"fltkgui.h"
+
+1336531883 source:c:\users\alfy\skydrive\programming\door manager\callbacks_print.cpp
+	"fltkgui.h"
+	<FL/Fl_Printer.H>
+
+1336533412 source:c:\users\alan\skydrive\programming\door manager\door manager prototype 3 source\callbacks.cpp
+	"fltkgui.h"
+
+1336530903 c:\users\alan\skydrive\programming\door manager\door manager prototype 3 source\fltkgui.h
+	<FL/Fl.H>
+	<SI/Si_Button.H>
+	"sqlite3.h"
+	"functions.h"
+	"door.h"
+	<iostream>
+	<FL/Fl_Double_Window.H>
+	<FL/Fl_Choice.H>
+	<FL/Fl_Group.H>
+	<FL/Fl_Input.H>
+	<FL/Fl_Browser.H>
+	<FL/Fl_Scroll.H>
+	<FL/Fl_Double_Window.H>
+	<FL/Fl_Button.H>
+	<FL/Fl_Box.H>
+	<FL/Fl_Pack.H>
+	<FL/Fl_Menu_Button.H>
+	<FL/Fl_Check_Button.H>
+	<FL/Fl_Text_Editor.H>
+	<FL/Fl_Choice.H>
+	<FL/Fl_Value_Output.H>
+	<FL/Fl_Value_Input.H>
+	<FL/Fl_Output.H>
+
+1331837286 c:\users\alan\skydrive\programming\door manager\door manager prototype 3 source\sqlite3.h
+	<stdarg.h>
+
+1336531340 c:\users\alan\skydrive\programming\door manager\door manager prototype 3 source\functions.h
+	"fltkgui.h"
+	"sqlite3.h"
+	"door.h"
+	<FL/Fl_Double_Window.H>
+	<FL/FL_JPEG_IMAGE.H>
+	<FL/Fl_Printer.H>
+	<FL/Fl_PostScript.H>
+	<stdio.h>
+	<stdlib.h>
+
+1334422618 c:\users\alan\skydrive\programming\door manager\door manager prototype 3 source\door.h
+	<fstream>
+	<string>
+
+1336533412 source:c:\users\alan\skydrive\programming\door manager\door manager prototype 3 source\callbacks_options.cpp
+	"fltkgui.h"
+
+1336531883 source:c:\users\alan\skydrive\programming\door manager\door manager prototype 3 source\callbacks_print.cpp
+	"fltkgui.h"
+	<FL/Fl_Printer.H>
+
+1334432110 source:c:\users\alan\skydrive\programming\door manager\door manager prototype 3 source\door.cpp
+	"door.h"
+
+1336534056 source:c:\users\alan\skydrive\programming\door manager\door manager prototype 3 source\fltkgui.cpp
+	"fltkgui.h"
+	<FL/Fl_JPEG_Image.H>
+
+1336607986 source:c:\users\alan\skydrive\programming\door manager\door manager prototype 3 source\functions.cpp
+	"functions.h"
+	<FL/FL_JPEG_IMAGE.H>
+
+1335893212 source:c:\users\alan\skydrive\programming\door manager\door manager prototype 3 source\resources.rc
+
+1331837286 source:c:\users\alan\skydrive\programming\door manager\door manager prototype 3 source\sqlite3.c
+	"config.h"
+	<stdint.h>
+	<inttypes.h>
+	<tcl.h>
+	<stdarg.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	<stddef.h>
+	<windows.h>
+	<os2safe.h>
+	<os2.h>
+	<uconv.h>
+	<ctype.h>
+	<time.h>
+	<sys/sysctl.h>
+	<malloc/malloc.h>
+	<libkern/OSAtomic.h>
+	<malloc.h>
+	<pthread.h>
+	<math.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<fcntl.h>
+	<unistd.h>
+	<sys/time.h>
+	<errno.h>
+	<sys/mman.h>
+	<sys/ioctl.h>
+	<semaphore.h>
+	<limits.h>
+	<sys/file.h>
+	<sys/param.h>
+	<sys/mount.h>
+	<utime.h>
+	<dlfcn.h>
+	<sys/cygwin.h>
+	"sqlite3rtree.h"
+	<unicode/utypes.h>
+	<unicode/uregex.h>
+	<unicode/ustring.h>
+	<unicode/ucol.h>
+	<unicode/ubrk.h>
+	<unicode/utf16.h>
+
