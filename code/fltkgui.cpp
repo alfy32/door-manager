@@ -614,7 +614,7 @@ Fl_Double_Window* make_print_dialog() {
         opt_Print_Notes->labelfont(8);
         opt_Print_Notes->align(Fl_Align(133|FL_ALIGN_INSIDE));
       } // Fl_Box* opt_Print_Notes
-      { opt_CompanyInfo = new Fl_Box(55, 46, 135, 80, "House of Glass\n167 E. 800 S.\nEphraim, UT 84627\n(435) 283-4982\n(435) 283-4\
+      { opt_CompanyInfo = new Fl_Box(55, 46, 135, 80, "House of Glass\n167 E. 800 S.\nEphraim, UT 84627\n(435) 283-4392\n(435) 283-4\
 402 Fax");
         opt_CompanyInfo->labelfont(8);
         opt_CompanyInfo->align(Fl_Align(FL_ALIGN_LEFT|FL_ALIGN_INSIDE));

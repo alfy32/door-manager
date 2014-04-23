@@ -50,17 +50,16 @@ if(W != width || H != height)
   }
 } 
 
-Function {} {open
-} {
+Function {} {} {
   code {//This will hide the command prompt if need: ShowWindow( GetConsoleWindow(), SW_HIDE );} {}
   code {Fl::scheme("gtk+");
 Fl::option(Fl::OPTION_ARROW_FOCUS, true);} {}
   Fl_Window wnd_main {
-    label {Door Manager} open selected
-    xywh {474 211 780 547} type Double color 55 align 80 resizable
+    label {Door Manager} open
+    xywh {474 211 780 547} type Double color 55 align 80 hide resizable
     code0 {wnd_main->db.setName("Data\\\\doors.db");}
     code1 {wnd_main->db.open();}
-    class Resize_Window size_range {600 300 0 0} visible
+    class Resize_Window size_range {600 300 0 0}
   } {
     Fl_Group grp_Sidebar {open
       xywh {0 0 260 547} box FLAT_BOX color 23 selection_color 55
@@ -101,8 +100,7 @@ Fl::option(Fl::OPTION_ARROW_FOCUS, true);} {}
   code {cb_resize(wnd_main);} {}
 } 
 
-Function {make_door_info_dialog()} {open
-} {
+Function {make_door_info_dialog()} {} {
   Fl_Window {} {
     label {Door Information} open
     xywh {377 309 808 624} type Double color 55 align 80 hide
@@ -291,7 +289,7 @@ Function {make_print_dialog()} {open
 } {
   Fl_Window {} {
     label {Print Preview} open
-    xywh {959 124 655 799} type Double color 7 align 80 hide
+    xywh {703 0 655 799} type Double color 7 align 80 visible
   } {
     Fl_Group grp_PrintGroup {open
       xywh {0 0 655 743}
@@ -351,8 +349,8 @@ Function {make_print_dialog()} {open
         label {House of Glass
 167 E. 800 S.
 Ephraim, UT 84627
-(435) 283-4982
-(435) 283-4402 Fax}
+(435) 283-4392
+(435) 283-4402 Fax} selected
         xywh {55 46 135 80} labelfont 8 align 20
       }
       Fl_Box {} {
