@@ -1,0 +1,33 @@
+FLTK Visual Studio 2010 HOW TO
+
+Project:
+	Win32 Project
+	Empty Project
+
+Project Properties:
+	VC++ Directories:
+		add the corresponding folders to:
+		-Include Directories
+		-Library Directories
+		-Source Directories
+	C/C++:
+		Aditional Indlude Directories:
+			from the fltk directory add:
+			-fltk directory
+			-zlib
+			-png
+			-jpeg
+	Linker:
+		General:
+			Additional Library Directories:
+				from the fltk directory add:
+				-lib
+		Input:
+			Additional Dependencies:
+				fltkimages.lib
+				fltkpng.lib
+				fltkjpeg.lib
+				fltkzlib.lib
+				fltk.lib
+			Ignore Specified Default Libraries:
+				libcd

@@ -1,0 +1,13 @@
+standard brass
+other $5
+
+hinges
+brass
+brush nickel 
+chrome 
+oil rub bronze 
+black 
+white
+
+spring hinge other category yes no
+
